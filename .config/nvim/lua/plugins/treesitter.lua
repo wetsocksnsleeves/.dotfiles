@@ -6,6 +6,7 @@ return {
         tree.setup({
             ensure_installed = {"lua", "javascript"},
             highlight = { enable = true },
+            auto_install = true,
             indent = { enable = true },
         })
     end
