@@ -8,3 +8,20 @@ vim.cmd("set colorcolumn=80")
 vim.cmd("highlight ColorColumn ctermbg=8 guibg=lightgrey")
 vim.cmd("set number")
 vim.diagnostic.config({ update_in_insert = true })
+
+-- Compiler.nvim keymaps (Doesn't work unless in here for some reason)
+
+-- Open compiler
+vim.keymap.set("n", "<F6>", ":CompilerOpen<CR>", { noremap = true, silent = true })
+
+-- Redo last selected option
+vim.keymap.set(
+	"n",
+	"<S-F6>",
+	"<cmd>CompilerStop<cr>" -- (Optional, to dispose all tasks before redo)
+		.. "<cmd>CompilerRedo<cr>",
+	{ noremap = true, silent = true }
+)
+
+-- Toggle compiler results
+vim.keymap.set("n", "<S-F7>", "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true })
