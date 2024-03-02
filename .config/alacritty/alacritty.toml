@@ -1,0 +1,19 @@
+live_config_reload = true
+
+[font]
+size = 15.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[window]
+dimensions = { columns = 150, lines = 36 }
+position = { x = 50, y = 90 }
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.85
+
+[window.padding]
+x = 18
+y = 16
