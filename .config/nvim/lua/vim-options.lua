@@ -9,6 +9,8 @@ vim.cmd("highlight ColorColumn ctermbg=8 guibg=lightgrey")
 vim.cmd("set number")
 vim.diagnostic.config({ update_in_insert = true })
 
+vim.keymap.set('n', "<F5>", ":!python3 %<CR>")
+
 -- Compiler.nvim keymaps (Doesn't work unless in here for some reason)
 
 -- Open compiler
