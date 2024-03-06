@@ -8,6 +8,7 @@ vim.cmd("set colorcolumn=80")
 vim.cmd("highlight ColorColumn ctermbg=8 guibg=lightgrey")
 vim.cmd("set number")
 vim.diagnostic.config({ update_in_insert = true })
+vim.wo.relativenumber=true
 
 -- Useful remaps
 vim.keymap.set('n', "<F5>", ":!python3 %<CR>")
