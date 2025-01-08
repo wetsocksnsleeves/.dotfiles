@@ -8,7 +8,8 @@ return {
         },
         config = function()
           require("mason-null-ls").setup({
-                ensure_installed = { "stylua", "clang-format", "mypy", "black", "pylint"}
+                ensure_installed = { "stylua", "clang-format", "pylint", "black"},
+                automatic_installation = true,
             })
         end,
     }
