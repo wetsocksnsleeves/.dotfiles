@@ -13,6 +13,7 @@ vim.wo.relativenumber=true
 -- Useful remaps
 vim.keymap.set('n', "<F5>", ":!python3 %<CR>")
 vim.keymap.set('n', "<leader>fx", ":!chmod +x %<CR>")
+vim.keymap.set('n', '<leader>fr', ':%s//g<left><left>', { noremap = true })
 
 -- Compiler.nvim keymaps (Doesn't work unless in here for some reason)
 

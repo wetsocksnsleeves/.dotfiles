@@ -55,6 +55,7 @@ return {
                         vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
                         vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
                         vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+                        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, {})
                 end,
         },
 }
