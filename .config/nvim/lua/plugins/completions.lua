@@ -3,6 +3,9 @@ return {
         "hrsh7th/cmp-nvim-lsp",
     },
     {
+        "hrsh7th/cmp-buffer",  -- Add this for buffer completions
+    },
+    {
         "L3MON4D3/LuaSnip",
         dependencies = {
             "saadparwaiz1/cmp_luasnip",
@@ -14,7 +17,6 @@ return {
         config = function()
             local cmp = require("cmp")
             require("luasnip.loaders.from_vscode").lazy_load()
-
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -32,13 +34,21 @@ return {
                     ["<C-e>"] = cmp.mapping.abort(),
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 }),
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "luasnip" }, -- For luasnip users.
-                }, {
-                    { name = "buffer" },
-                }),
+                sources = {  -- Modified sources configuration
+                    { name = "nvim_lsp", priority = 1000 },
+                    { name = "luasnip", priority = 750 },
+                    { name = "buffer", priority = 500,
+                        option = {
+                            get_bufnrs = function()
+                                return vim.api.nvim_list_bufs()
+                            end
+                        }
+                    },
+                },
             })
         end,
+        dependencies = {
+            "hrsh7th/cmp-buffer",  -- Add dependency here as well
+        },
     },
 }

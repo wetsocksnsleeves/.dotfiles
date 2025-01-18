@@ -14,6 +14,7 @@ return {
                     command = vim.fn.expand("~/.pyenv/shims/pylint"),
                 }),
             },
+            autostart = true,
         })
 
         vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
