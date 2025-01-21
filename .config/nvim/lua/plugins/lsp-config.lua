@@ -7,7 +7,6 @@ return {
 		end,
 	},
 	{
-
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
 		opts = {
@@ -15,7 +14,6 @@ return {
 		},
 	},
 	{
-
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
@@ -28,6 +26,7 @@ return {
 			)
 
 			local lspconfig = require("lspconfig")
+			lspconfig.denols.setup({})
 
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
@@ -39,11 +38,12 @@ return {
 				capabilities = capabilities,
 				cmd = { "clangd", "--clang-tidy" },
 			})
-            lspconfig.pyright.setup({
+			lspconfig.pyright.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.denols.setup({})
 
-            -- Key bindings
+			-- Key bindings
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)

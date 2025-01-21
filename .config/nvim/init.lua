@@ -12,6 +12,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- For Deno --
+vim.g.markdown_fenced_languages = {
+      "ts=typescript"
+}
+
 -- LOAD PLUGINS & OPTIONS --
 require("vim-options")
 require("lazy").setup("plugins")
