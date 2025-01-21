@@ -41,7 +41,9 @@ return {
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.denols.setup({})
+			lspconfig.denols.setup({
+				capabilities = capabilities,
+			})
 
 			-- Key bindings
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
