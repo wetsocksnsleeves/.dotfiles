@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ $# -ne 1 ]; then
+    echo "Usage: glower <file.md>"
+    exit 1
+fi
+
+file="$1"
+initial_time=$(stat -c %Y "$file")
+
+PANE_ID=$(tmux display-message -p '#{pane_id}')
+clear
+glow "$file"
+
+while true; do
+   current_time=$(stat -c %Y "$file")
+   if [ "$current_time" != "$initial_time" ]; then
+        
+        tmux send-keys -t $PANE_ID C-c
+        clear
+        glow "$file"
+
+        initial_time=$current_time
+   fi
+   sleep 1
+done
