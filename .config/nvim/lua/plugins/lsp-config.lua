@@ -1,7 +1,6 @@
 return {
 	{
-		"williamboman/mason.nvim",
-		lazy = false,
+		"williamboman/mason.nvim", lazy = false,
 		config = function()
 			require("mason").setup()
 		end,
@@ -39,6 +38,9 @@ return {
 				cmd = { "clangd", "--clang-tidy" },
 			})
 			lspconfig.pyright.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.ltex.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.denols.setup({
