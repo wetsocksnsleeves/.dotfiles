@@ -5,8 +5,6 @@ return {
 
         null_ls.setup({
             sources = {
-                -- Lua
-                null_ls.builtins.formatting.stylua,
                 -- General purpose
                 null_ls.builtins.formatting.prettier.with({
                     disabled_filetypes = { "typescript" },
