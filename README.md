@@ -7,6 +7,7 @@ This repo consists of all my dotfiles. 🔥 Amazing nvim configuration. Tmux con
 [Installation](#installation)
 [Want your own?](#setting-up-your-own-repo)
 [Overview](#overview)
+[Keybinds](#key-binds)
 
 # Installation
 
@@ -96,6 +97,51 @@ Mason is useful but sometimes the package it installs is broken, so it's better 
 
 ## Key binds
 
-| Function | Keymap |
-| -------- | ------ |
-| Item1    | Item1  |
+[Neovim](#nvim)
+[Tmux](#tmux)
+
+### Neovim
+
+| Function                   | Keymap                                    |
+| -------------------------- | ----------------------------------------- |
+| space + gc                 | Comment line                              |
+| space + gb                 | Block Comment                             |
+| space + nf                 | Generate Docstring                        |
+| space + gr                 | Find references                           |
+| space + gd                 | Find definition                           |
+| space + ca                 | Code action                               |
+| space + rn                 | Rename                                    |
+| K                          | Show hover information                    |
+| ctrl + n                   | Open neo-tree                             |
+| ctrl + h                   | Hide neo-tree                             |
+| space + gf (or write file) | Format Code                               |
+| ctrl + p                   | Open telescope                            |
+| ctrl + c                   | Close telescope                           |
+| space + fg                 | Live grep telescope                       |
+| ctrl + p / Ctrl + n        | Next/Previous in telescope                |
+| space + en                 | Telescope in nvim configuration folder    |
+| z=                         | Vim spell correct suggestions             |
+| space + fr                 | Find and replace                          |
+| space + nh                 | Un-highlight                              |
+| space + fx                 | Turn current file into executable         |
+| F5                         | Run current python script                 |
+| space + p                  | Paste without resetting default register  |
+| space + y/yy               | Yank into system clipboard                |
+| space + d/dd               | Delete without resetting default register |
+| K / J                      | Move selection up and down                |
+
+### Tmux
+
+Mostly stock settings.
+
+Leader is remapped to <ctrl + s>
+
+| Function        | Keymap                      |
+| --------------- | --------------------------- |
+| leader + %      | Create pane to the right    |
+| leader + "      | Create pane below           |
+| leader + c      | Create new window           |
+| leader + number | Move to window number       |
+| leader + ,      | Rename window               |
+| leader + d      | Detach from current session |
+| leader + [      | Enter copy mode             |
