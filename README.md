@@ -4,9 +4,9 @@ This repo consists of all my dotfiles. 🔥 Amazing nvim configuration. Tmux con
 
 # Table of contents
 
-[Installation](#installation)
-[Want your own?](#setting-up-your-own-repo)
-[Overview](#overview)
+[Installation](#installation)\
+[Want your own?](#setting-up-your-own-repo)\
+[Overview](#overview)\
 [Keybinds](#key-binds)
 
 # Installation
@@ -71,11 +71,11 @@ This project is based of the method in this [Atlassian Blog](https://www.atlassi
 
 ## What's being used
 
-💤 Lazy.nvim the Package manager
-📁 Neo-tree as File explorer
-🔭 Telescope as File finder
-🔔 Lua Line for Status bar
-🤓 Completions and Docstrings
+💤 Lazy.nvim the Package manager\
+📁 Neo-tree as File explorer\
+🔭 Telescope as File finder\
+🔔 Lua Line for Status bar\
+🤓 Completions and Docstrings\
 🌊 Kanagawa themed
 
 ## Lsps, Linters, and Formatters
@@ -97,7 +97,7 @@ Mason is useful but sometimes the package it installs is broken, so it's better 
 
 ## Key binds
 
-[Neovim](#nvim)
+[Neovim](#nvim)\
 [Tmux](#tmux)
 
 ### Neovim
