@@ -9,6 +9,9 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         lazy = false,
+        require("mason-lspconfig").setup {
+            ensure_installed = { "lua_ls", "clangd", "ltex", "marksman" },
+        }
     },
     {
         "neovim/nvim-lspconfig",
@@ -24,11 +27,7 @@ return {
             )
 
             local lspconfig = require("lspconfig")
-            lspconfig.denols.setup({})
 
-            lspconfig.tailwindcss.setup({
-                capabilities = capabilities,
-            })
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
             })
@@ -36,10 +35,17 @@ return {
                 capabilities = capabilities,
                 cmd = { "clangd", "--clang-tidy" },
             })
-            lspconfig.pyright.setup({
+            lspconfig.ltex.setup({
                 capabilities = capabilities,
             })
-            lspconfig.ltex.setup({
+            lspconfig.marksman.setup({
+                capabilities = capabilities,
+            })
+
+            lspconfig.tailwindcss.setup({
+                capabilities = capabilities,
+            })
+            lspconfig.pyright.setup({
                 capabilities = capabilities,
             })
             lspconfig.denols.setup({
