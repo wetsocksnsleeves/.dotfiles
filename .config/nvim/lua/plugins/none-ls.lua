@@ -20,7 +20,6 @@ return {
                     extra_args = { "--line-length", "79" },
                 }),
                 null_ls.builtins.diagnostics.pylint.with({
-                    command = vim.fn.expand("~/.pyenv/shims/pylint"),
                 }),
             },
             autostart = true,

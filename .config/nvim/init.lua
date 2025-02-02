@@ -18,17 +18,17 @@ vim.g.markdown_fenced_languages = {
 }
 
 -- For Wsl
-vim.g.clipboard = {
-    name = 'win32yank',
-    copy = {
-        ['+'] = 'win32yank.exe -i',
-        ['*'] = 'win32yank.exe -i',
-    },
-    paste = {
-        ['+'] = 'win32yank.exe -o',
-        ['*'] = 'win32yank.exe -o',
-    },
-}
+-- vim.g.clipboard = {
+--     name = 'win32yank',
+--     copy = {
+--         ['+'] = 'win32yank.exe -i',
+--         ['*'] = 'win32yank.exe -i',
+--     },
+--     paste = {
+--         ['+'] = 'win32yank.exe -o',
+--         ['*'] = 'win32yank.exe -o',
+--     },
+-- }
 
 -- LOAD PLUGINS & OPTIONS --
 require("vim-options")
