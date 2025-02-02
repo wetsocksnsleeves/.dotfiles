@@ -17,18 +17,26 @@ vim.g.markdown_fenced_languages = {
     "ts=typescript"
 }
 
--- For Wsl
--- vim.g.clipboard = {
---     name = 'win32yank',
---     copy = {
---         ['+'] = 'win32yank.exe -i',
---         ['*'] = 'win32yank.exe -i',
---     },
---     paste = {
---         ['+'] = 'win32yank.exe -o',
---         ['*'] = 'win32yank.exe -o',
---     },
--- }
+-- + registry for WSL
+local function is_wsl()
+    local output = vim.fn.system("uname -r")
+    return string.find(output, "WSL") ~= nil or string.find(output, "microsoft") ~= nil
+end
+
+if is_wsl() then
+    vim.g.clipboard = {
+        name = 'WslClipboard',
+        copy = {
+            ['+'] = 'clip.exe',
+            ['*'] = 'clip.exe',
+        },
+        paste = {
+            ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        },
+        cache_enabled = 0,
+    }
+end
 
 -- LOAD PLUGINS & OPTIONS --
 require("vim-options")
