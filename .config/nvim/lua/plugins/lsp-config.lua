@@ -27,6 +27,7 @@ return {
                 vim.lsp.protocol.make_client_capabilities(),
                 cmp_nvim_lsp.default_capabilities()
             )
+            capabilities.textDocument.completion.completionItem.snippetSupport = true
 
             local lspconfig = require("lspconfig")
 
@@ -43,8 +44,26 @@ return {
             lspconfig.marksman.setup({
                 capabilities = capabilities,
             })
-
+            lspconfig.emmet_ls.setup({
+                capabilities = capabilities,
+                filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "scss", "typescriptreact" },
+                init_options = {
+                    html = {
+                        options = {
+                            ["bem.enabled"] = true,
+                        },
+                    },
+                }
+            })
             lspconfig.tailwindcss.setup({
+                filetypes = {
+                    'html',
+                    'javascript',
+                    'javascriptreact',
+                    'typescript',
+                    'typescriptreact',
+                    -- add any other filetypes you need
+                },
                 capabilities = capabilities,
             })
             lspconfig.pyright.setup({

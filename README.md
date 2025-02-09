@@ -94,6 +94,7 @@ Mason is useful but sometimes the package it installs is broken, so it's better 
 - pyright
 - @tailwindcss/language-server
 - prettier
+- emmet-ls
 
 ## My ideal environment setup
 

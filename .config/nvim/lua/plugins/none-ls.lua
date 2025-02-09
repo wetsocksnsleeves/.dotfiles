@@ -7,7 +7,7 @@ return {
             sources = {
                 -- General purpose
                 null_ls.builtins.formatting.prettier.with({
-                    disabled_filetypes = { "typescript" },
+                    filetypes = { "json" },
                     extra_args = {
                         "--use-tabs=false",
                         "--tab-width=4",
@@ -32,10 +32,10 @@ return {
         end)
 
         -- Format on write
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            callback = function()
-                vim.lsp.buf.format()
-            end,
-        })
+        -- vim.api.nvim_create_autocmd("BufWritePre", {
+        --     callback = function()
+        --         vim.lsp.buf.format()
+        --     end,
+        -- })
     end,
 }
