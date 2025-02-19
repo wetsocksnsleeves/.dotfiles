@@ -27,7 +27,7 @@ return {
                 vim.lsp.protocol.make_client_capabilities(),
                 cmp_nvim_lsp.default_capabilities()
             )
-            capabilities.textDocument.completion.completionItem.snippetSupport = true
+            -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
             local lspconfig = require("lspconfig")
 

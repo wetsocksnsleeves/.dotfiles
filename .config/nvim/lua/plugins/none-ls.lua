@@ -7,7 +7,6 @@ return {
             sources = {
                 -- General purpose
                 null_ls.builtins.formatting.prettier.with({
-                    filetypes = { "json" },
                     extra_args = {
                         "--use-tabs=false",
                         "--tab-width=4",
