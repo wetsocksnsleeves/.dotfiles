@@ -39,3 +39,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Keep cursor in middle while search
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- Ctrl C to Esc
+vim.keymap.set("i", "<C-c>", "<Esc>")
