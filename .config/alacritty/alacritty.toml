@@ -1,19 +1,13 @@
-[font.normal]
-family = "JetBrainsMono Nerd Font"
-style = "Regular"
-
-[window]
-decorations = "None"
-opacity = 0.8
-blur = true
-startup_mode = "Maximized"
-padding = {x = 10, y = 5}
-
 [general]
-live_config_reload = true
-
+	live_config_reload = true
+[window]
+	padding = {x = 15, y = 10}
+	decorations = "buttonless"
+	opacity = 0.5
+	blur = true
+	startup_mode = "SimpleFullscreen"
+[font]
+	normal = { family = "Inconsolata Nerd Font Mono", style = "Regular" }
+	size = 18
 [selection]
-save_to_clipboard = true
-
-[terminal]
-shell = "zsh"
+	save_to_clipboard = true
