@@ -11,12 +11,17 @@ return {
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
         },
+        config = function()
+            local luasnip = require("luasnip")
+            luasnip.filetype_extend("javascriptreact", {"html"})
+            luasnip.filetype_extend("typescriptreact", {"html"})
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
     },
     {
         "hrsh7th/nvim-cmp",
         config = function()
             local cmp = require("cmp")
-            require("luasnip.loaders.from_vscode").lazy_load()
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -37,12 +42,14 @@ return {
                 sources = {  -- Modified sources configuration
                     { name = "nvim_lsp", priority = 1000 },
                     { name = "luasnip", priority = 750 },
-                    { name = "buffer", priority = 500,
+                    {
+                        name = "buffer",
+                        priority = 500,
                         option = {
                             get_bufnrs = function()
                                 return vim.api.nvim_list_bufs()
-                            end
-                        }
+                            end,
+                        },
                     },
                 },
             })

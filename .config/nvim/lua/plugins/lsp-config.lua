@@ -11,7 +11,7 @@ return {
         lazy = false,
         config = function()
             require("mason-lspconfig").setup {
-                ensure_installed = { "lua_ls", "clangd", "ltex", "marksman" },
+                ensure_installed = { "lua_ls", "clangd", "ltex", "marksman", "ts_ls" },
             }
         end,
     },
@@ -44,16 +44,11 @@ return {
             lspconfig.marksman.setup({
                 capabilities = capabilities,
             })
-            lspconfig.emmet_ls.setup({
+            lspconfig.pyright.setup({
                 capabilities = capabilities,
-                filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "scss", "typescriptreact" },
-                init_options = {
-                    html = {
-                        options = {
-                            ["bem.enabled"] = true,
-                        },
-                    },
-                }
+            })
+            lspconfig.ts_ls.setup({
+                capabilities = capabilities,
             })
             lspconfig.tailwindcss.setup({
                 filetypes = {
@@ -66,11 +61,13 @@ return {
                 },
                 capabilities = capabilities,
             })
-            lspconfig.pyright.setup({
+            lspconfig.eslint.setup({
                 capabilities = capabilities,
-            })
-            lspconfig.denols.setup({
-                capabilities = capabilities,
+                -- cmd = { "node", vim.fn.exepath("node_modules/.bin/eslint") },
+                cmd = {"eslint_d"},
+                settings = {
+                    workingDirectories = { mode = "auto" },
+                },
             })
 
             -- Key bindings

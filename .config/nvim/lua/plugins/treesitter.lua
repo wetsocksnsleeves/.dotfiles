@@ -1,13 +1,17 @@
 return {
-    "nvim-treesitter/nvim-treesitter", 
+    "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function() 
-        local tree = require("nvim-treesitter.configs")
-        tree.setup({
-            ensure_installed = {"lua", "javascript"},
+    config = function()
+        require("nvim-treesitter").setup({
+            ensure_installed = { "lua", "javascript", "typescript", "tsx" },
             highlight = { enable = true },
             auto_install = true,
+            autotag = { enable = true },
             indent = { enable = true },
         })
-    end
+    end,
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter/playground',
+    }
 }
