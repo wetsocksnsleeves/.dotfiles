@@ -17,9 +17,20 @@ vim.opt.scrolloff = 8
 
 vim.diagnostic.config({ update_in_insert = true })
 
--- Quality of life
+-- Quick python run
 vim.keymap.set('n', "<F5>", ":!python3 %<CR>")
+
+-- Quick script permissions
 vim.keymap.set('n', "<leader>fx", ":!chmod +x %<CR>")
+
+-- Move through wrapped lines like normal
+vim.keymap.set('n', 'k', function()
+  return vim.v.count == 0 and 'gk' or 'k'
+end, { expr = true })
+
+vim.keymap.set('n', 'j', function()
+  return vim.v.count == 0 and 'gj' or 'j'
+end, { expr = true })
 
 -- Copy pasta
 vim.keymap.set("x", "<leader>p", "\"_dP")         -- paste without resetting buffer
