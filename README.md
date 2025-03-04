@@ -91,25 +91,24 @@ Mason is useful but sometimes the package it installs is broken, so it's better 
 
 **Yarn install these for default configuration:**
 
+- eslint_d
 - pyright
-- @tailwindcss/language-server
 - prettier
-- emmet-ls
+- @tailwindcss/language-server
 
 ## My ideal environment setup
 
 1. Installing wget, curl, git, and zsh.
 2. Installing Oh My Zsh. And apply my .zshrc
 3. Install Neovim
-4. Install Nodejs then install yarn
+4. Install Node.js, fnm, and yarn
 5. Install relevant yarn [packages](#note)
 6. Pyenv + Python build dependencies
 7. GNU gcc
 8. Python3
 9. Hugo
-10. Deno
-11. Tmux
-12. My dotfiles
+10. Tmux
+11. My dotfiles
 
 ## Key binds
 
