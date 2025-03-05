@@ -3,7 +3,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
     },
     {
-        "hrsh7th/cmp-buffer",  -- Add this for buffer completions
+        "hrsh7th/cmp-buffer", -- Add this for buffer completions
     },
     {
         "L3MON4D3/LuaSnip",
@@ -13,8 +13,8 @@ return {
         },
         config = function()
             local luasnip = require("luasnip")
-            luasnip.filetype_extend("javascriptreact", {"html"})
-            luasnip.filetype_extend("typescriptreact", {"html"})
+            luasnip.filetype_extend("javascriptreact", { "html" })
+            luasnip.filetype_extend("typescriptreact", { "html" })
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
@@ -22,6 +22,28 @@ return {
         "hrsh7th/nvim-cmp",
         config = function()
             local cmp = require("cmp")
+            local luasnip = require('luasnip')
+
+            local function cmp_prev(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item()
+                elseif luasnip.locally_jumpable(1) then
+                    luasnip.jump(1)
+                else
+                    fallback()
+                end
+            end
+
+            local function cmp_next(fallback)
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                elseif luasnip.locally_jumpable(-1) then
+                    luasnip.jump(-1)
+                else
+                    fallback()
+                end
+            end
+
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -32,16 +54,30 @@ return {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
                 },
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-j>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-k>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                -- Super tab like mapping from documentation
+                mapping = ({
+                    ['<CR>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            if luasnip.expandable() then
+                                luasnip.expand()
+                            else
+                                cmp.confirm({
+                                    select = true,
+                                })
+                            end
+                        else
+                            fallback()
+                        end
+                    end),
+
+                    ["<Tab>"] = cmp.mapping(cmp_prev, { "i", "s" }),
+                    ["<S-Tab>"] = cmp.mapping(cmp_next, { "i", "s" }),
+                    ["<Down>"] = cmp.mapping(cmp_prev, { "i", "s" }),
+                    ["<Up>"] = cmp.mapping(cmp_next, { "i", "s" }),
                 }),
-                sources = {  -- Modified sources configuration
+                sources = { -- Modified sources configuration
                     { name = "nvim_lsp", priority = 1000 },
-                    { name = "luasnip", priority = 750 },
+                    { name = "luasnip",  priority = 750 },
                     {
                         name = "buffer",
                         priority = 500,
@@ -58,7 +94,7 @@ return {
             })
         end,
         dependencies = {
-            "hrsh7th/cmp-buffer",  -- Add dependency here as well
+            "hrsh7th/cmp-buffer", -- Add dependency here as well
         },
     },
 }
