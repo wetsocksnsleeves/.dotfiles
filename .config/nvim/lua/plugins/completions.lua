@@ -52,6 +52,9 @@ return {
                         },
                     },
                 },
+                formatting = {
+                    format = require("tailwindcss-colorizer-cmp").formatter,
+                }
             })
         end,
         dependencies = {
