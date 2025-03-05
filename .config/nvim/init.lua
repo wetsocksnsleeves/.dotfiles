@@ -17,7 +17,7 @@ vim.g.markdown_fenced_languages = {
     "ts=typescript"
 }
 
--- + registry for WSL
+-- '+' registry for WSL
 local function is_wsl()
     local output = vim.fn.system("uname -r")
     return string.find(output, "WSL") ~= nil or string.find(output, "microsoft") ~= nil

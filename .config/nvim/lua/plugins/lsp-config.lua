@@ -50,6 +50,9 @@ return {
             lspconfig.ts_ls.setup({
                 capabilities = capabilities,
             })
+            -- lspconfig.denols.setup({
+            --     capabilities = capabilities,
+            -- })
             lspconfig.tailwindcss.setup({
                 filetypes = {
                     'html',
@@ -57,7 +60,6 @@ return {
                     'javascriptreact',
                     'typescript',
                     'typescriptreact',
-                    -- add any other filetypes you need
                 },
                 capabilities = capabilities,
             })
