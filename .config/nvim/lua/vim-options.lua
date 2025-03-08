@@ -17,6 +17,8 @@ vim.opt.scrolloff = 8
 
 vim.diagnostic.config({ update_in_insert = true })
 
+------ REMAPS ------
+
 -- Quick python run
 vim.keymap.set('n', "<F5>", ":!python3 %<CR>")
 
