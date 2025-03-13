@@ -21,3 +21,4 @@ fi
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 alias sz="source ~/.zshrc"
+alias mknextpj="npx create-next-app@latest"
