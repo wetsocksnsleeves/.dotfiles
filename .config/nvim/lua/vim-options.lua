@@ -7,7 +7,6 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set autoindent")
 vim.cmd("set colorcolumn=80")
 vim.cmd("set number")
-
 vim.wo.relativenumber = true
 
 vim.opt.spell = true

@@ -1,4 +1,4 @@
--- LAZY PACKAGE MANAGER --
+-- Lazy setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -40,18 +40,27 @@ end
 
 -- Disable inlay hints
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = false,
+    virtual_text = false,
 })
 
 vim.diagnostic.config({
-  underline = true, -- Enable underlines
-  virtual_text = false, -- Disable virtual text (if you don't want it)
-  signs = true, -- Enable signs in the sign column
-  update_in_insert = false, -- Prevent diagnostics from updating during insert mode
-  severity_sort = true, -- Sort diagnostics by severity
+    underline = true,         -- Enable underlines
+    virtual_text = false,     -- Disable virtual text (if you don't want it)
+    signs = true,             -- Enable signs in the sign column
+    update_in_insert = false, -- Prevent diagnostics from updating during insert mode
+    severity_sort = true,     -- Sort diagnostics by severity
 })
 
--- LOAD PLUGINS & OPTIONS --
+-- Load plugins, vim options, and lazy configuration
 require("vim-options")
-require("lazy").setup("plugins")
-require("lazy").setup(plugins, opts) -- Load Lazy --
+require("lazy").setup(
+    "plugins",
+    {
+        spec = {},
+        ui = {
+            border = "rounded",
+            title = nil, ---@type string only works when border is not "none"
+            title_pos = "center", ---@type "center" | "left" | "right"
+        }
+    }
+)
