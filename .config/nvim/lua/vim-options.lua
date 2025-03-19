@@ -7,7 +7,6 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set autoindent")
 vim.cmd("set colorcolumn=80")
 vim.cmd("set number")
-vim.cmd("highlight ColorColumn ctermbg=8 guibg=lightgrey")
 
 vim.wo.relativenumber = true
 
@@ -27,11 +26,11 @@ vim.keymap.set('n', "<leader>fx", ":!chmod +x %<CR>")
 
 -- Move through wrapped lines like normal
 vim.keymap.set('n', 'k', function()
-  return vim.v.count == 0 and 'gk' or 'k'
+    return vim.v.count == 0 and 'gk' or 'k'
 end, { expr = true })
 
 vim.keymap.set('n', 'j', function()
-  return vim.v.count == 0 and 'gj' or 'j'
+    return vim.v.count == 0 and 'gj' or 'j'
 end, { expr = true })
 
 -- Copy pasta
