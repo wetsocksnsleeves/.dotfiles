@@ -19,31 +19,25 @@ return {
         "neovim/nvim-lspconfig",
         lazy = false,
         config = function()
-            -- Cursor hover time configuration
-            vim.o.updatetime = 250
-            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
-                callback = function()
-                    vim.diagnostic.open_float(nil, { focus = false })
-                end
-            })
-
             -- Hover window customisation
-            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#121212" })
-            vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#121212", fg = "#585858" })
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+            vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "none" })
 
             local function open_diagnostic_float(bufnr)
                 local opts = {
                     focusable = false,
-
                     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
                     border = 'rounded',
                     source = 'always',
-                    prefix = ' ',
+                    prefix = '  ',
+                    suffix = '  ',
                     scope = 'cursor',
                 }
                 vim.diagnostic.open_float(bufnr, opts)
             end
+
+            -- Cursor hover time configuration
+            vim.o.updatetime = 250
 
             -- On attach function to use hover window diagnostics
             local on_attach = function(client, bufnr)
@@ -59,7 +53,14 @@ return {
                 client.server_capabilities.hoverProvider = true
                 client.handlers["textDocument/hover"] = vim.lsp.with(
                     vim.lsp.handlers.hover,
-                    { border = 'rounded' }
+                    {
+                        focusable = false,
+                        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                        border = 'rounded',
+                        source = 'always',
+                        prefix = ' ',
+                        scope = 'cursor',
+                    }
                 )
             end
 
