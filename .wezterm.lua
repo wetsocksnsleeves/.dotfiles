@@ -6,10 +6,36 @@ local config = wezterm.config_builder()
 
 -- Universal configurations
 config.font = wezterm.font { family = "JetBrainsMono Nerd Font" }
+config.colors = { -- Custom version of the Batman color scheme
+    foreground = "#e4e4e4",
+    background = "#1B1D1D",
+    cursor_bg = "#fff67d",
+    selection_bg = "#4D4F4C",
+    selection_fg = "#fff67d",
+    ansi = {
+        "#1B1D1D",
+        "#E73A43",
+        "#C9BE46",
+        "#F4FD22",
+        "#7396C7",
+        "#736FC7",
+        "#626060",
+        "#C5C5C5",
+    },
+    brights = {
+        "#505353",
+        "#F68E93",
+        "#E1D994",
+        "#FFFD87",
+        "#A8C4E6",
+        "#B6A9E6",
+        "#A3A2A2",
+        "#DADADA",
+    }
+}
 
 -- Windows Configurations
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-    config.color_scheme = 'Kanagawa Dragon (Gogh)'
     config.font_size = 12.0
     config.hide_tab_bar_if_only_one_tab = true
     config.window_decorations = "RESIZE"
@@ -27,7 +53,6 @@ end
 
 -- Mac Configurations
 if wezterm.target_triple == 'x86_64-apple-darwin' then
-    config.color_scheme = 'Batman'
     config.font_size = 15.0
     config.hide_tab_bar_if_only_one_tab = true
     config.window_decorations = "RESIZE"
