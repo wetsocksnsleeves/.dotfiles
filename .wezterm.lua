@@ -6,33 +6,7 @@ local config = wezterm.config_builder()
 
 -- Universal configurations
 config.font = wezterm.font { family = "JetBrainsMono Nerd Font" }
-config.colors = { -- Custom version of the Batman color scheme
-    foreground = "#e4e4e4",
-    background = "#1B1D1D",
-    cursor_bg = "#fff67d",
-    selection_bg = "#4D4F4C",
-    selection_fg = "#fff67d",
-    ansi = {
-        "#1B1D1D",
-        "#E73A43",
-        "#C9BE46",
-        "#F4FD22",
-        "#7396C7",
-        "#736FC7",
-        "#626060",
-        "#C5C5C5",
-    },
-    brights = {
-        "#505353",
-        "#F68E93",
-        "#E1D994",
-        "#FFFD87",
-        "#A8C4E6",
-        "#B6A9E6",
-        "#A3A2A2",
-        "#DADADA",
-    }
-}
+config.color_scheme = "Vengence" -- Custom version of the Batman color scheme
 
 -- Windows Configurations
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
@@ -70,6 +44,36 @@ if wezterm.target_triple == 'x86_64-apple-darwin' then
     config.initial_rows = 200
     config.initial_cols = 200
 end
+
+config.color_schemes = {
+	['Vengence'] = {
+	    foreground = "#e4e4e4",
+	    background = "#000000",
+	    cursor_bg = "#fff67d",
+	    cursor_border = "#fff67d",
+	    selection_bg = "#4D4F4C",
+	    ansi = {
+		"#1B1D1D",
+		"#E73A43",
+		"#C9BE46",
+		"#F4FD22",
+		"#7396C7",
+		"#736FC7",
+		"#626060",
+		"#C5C5C5",
+	    },
+	    brights = {
+		"#505353",
+		"#F68E93",
+		"#E1D994",
+		"#FFFD87",
+		"#A8C4E6",
+		"#B6A9E6",
+		"#A3A2A2",
+		"#DADADA",
+	    }
+	},
+}
 
 -- and finally, return the configuration to wezterm
 return config
