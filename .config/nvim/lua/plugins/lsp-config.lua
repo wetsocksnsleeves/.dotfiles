@@ -82,10 +82,6 @@ return {
                 capabilities = capabilities,
                 cmd = { "clangd", "--clang-tidy" },
             })
-            lspconfig.ltex.setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-            })
             lspconfig.marksman.setup({
                 on_attach = on_attach,
                 capabilities = capabilities,
@@ -101,6 +97,9 @@ return {
             -- lspconfig.denols.setup({
             --     capabilities = capabilities,
             -- })
+            lspconfig.emmet_ls.setup({
+                capabilities = capabilities,
+            })
             lspconfig.tailwindcss.setup({
                 on_attach = on_attach,
                 filetypes = {

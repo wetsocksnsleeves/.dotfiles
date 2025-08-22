@@ -125,6 +125,7 @@ Mason is useful but sometimes the package it installs is broken, so it's better 
 | space + nf                 | Generate Docstring                        |
 | space + gr                 | Find references                           |
 | space + gd                 | Find definition                           |
+| space + t                  | Go Back                                   |
 | space + ca                 | Code action                               |
 | space + rn                 | Rename                                    |
 | K                          | Show hover information                    |
