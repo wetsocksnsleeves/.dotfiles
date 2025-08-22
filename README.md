@@ -98,7 +98,7 @@ Mason is useful but sometimes the package it installs is broken, so it's better 
 
 ## My ideal environment setup
 
-1. Installing wget, curl, git, and zsh.
+1. Installing wget, curl, git, ripgrep, and zsh.
 2. Installing Oh My Zsh. And apply my .zshrc
 3. Install Neovim
 4. Install Node.js, fnm, and yarn
@@ -134,6 +134,7 @@ Mason is useful but sometimes the package it installs is broken, so it's better 
 | ctrl + p                   | Open telescope                            |
 | ctrl + c                   | Close telescope                           |
 | space + fg                 | Live grep telescope                       |
+| space + fb                 | Search for buffer                         |
 | ctrl + p / Ctrl + n        | Next/Previous in telescope                |
 | space + en                 | Telescope in nvim configuration folder    |
 | z=                         | Vim spell correct suggestions             |
