@@ -7,6 +7,7 @@ local config = wezterm.config_builder()
 -- Universal configurations
 config.font = wezterm.font { family = "JetBrainsMono Nerd Font" }
 config.color_scheme = "Vengence" -- Custom version of the Batman color scheme
+config.audible_bell = "Disabled"
 
 -- Windows Configurations
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
