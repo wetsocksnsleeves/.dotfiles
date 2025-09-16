@@ -48,10 +48,10 @@ end
 
 -- Linux Configurations
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
-    config.font_size = 15.0
+    config.font_size = 12.0
     config.hide_tab_bar_if_only_one_tab = true
     config.window_decorations = "RESIZE"
-    config.window_background_opacity = 0.2
+    config.window_background_opacity = 0.6
     config.macos_window_background_blur = 50
 
     config.window_padding = {
