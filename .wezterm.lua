@@ -46,6 +46,26 @@ if wezterm.target_triple == 'x86_64-apple-darwin' then
     config.initial_cols = 200
 end
 
+-- Linux Configurations
+if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
+    config.font_size = 15.0
+    config.hide_tab_bar_if_only_one_tab = true
+    config.window_decorations = "RESIZE"
+    config.window_background_opacity = 0.2
+    config.macos_window_background_blur = 50
+
+    config.window_padding = {
+        left = '3cell',
+        right = '3cell',
+        top = '1cell',
+        bottom = '1cell',
+    }
+
+    -- Fullscreen
+    config.initial_rows = 200
+    config.initial_cols = 200
+end
+
 config.color_schemes = {
 	['Vengence'] = {
 	    foreground = "#e4e4e4",
