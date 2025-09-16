@@ -20,5 +20,6 @@ fi
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias sz="source ~/.zshrc"
 alias mknextpj="npx create-next-app@latest"
