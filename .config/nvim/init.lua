@@ -64,3 +64,4 @@ require("lazy").setup(
         }
     }
 )
+require("floating-terminal")
