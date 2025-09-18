@@ -4,6 +4,23 @@ ZSH_THEME="minimal"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
+# Vim keymaps
+bindkey -v
+
+# Visual cursor indicator
+function zle-keymap-select() {
+  case $KEYMAP in
+    vicmd)      echo -ne '\e[2 q' ;;
+    viins|main) echo -ne '\e[6 q' ;;
+  esac
+}
+zle -N zle-keymap-select
+
+zle-line-init() {
+  echo -ne '\e[6 q'
+}
+zle -N zle-line-init
+
 # Paths
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
