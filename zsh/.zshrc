@@ -6,6 +6,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Vim keymaps
 bindkey -v
+bindkey -v 'jl' vi-cmd-mode
 
 # Visual cursor indicator
 function zle-keymap-select() {
