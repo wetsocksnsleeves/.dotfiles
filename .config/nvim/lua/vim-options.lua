@@ -12,6 +12,7 @@ vim.wo.relativenumber = true
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.scrolloff = 8
+vim.opt.splitright = true
 
 vim.diagnostic.config({ update_in_insert = true })
 
