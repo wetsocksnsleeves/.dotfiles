@@ -5,6 +5,7 @@ set $mod Mod1
 
 font pango:JetBrainsMonoNerdFont 12
 
+exec --no-startup-id xrandr --size 1920x1080
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 exec_always --no-startup-id feh --bg-scale ~/.config/wallpapers/chrome_gothic_cross.jpg

@@ -23,3 +23,13 @@ fi
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias sz="source ~/.zshrc"
 alias mknextpj="npx create-next-app@latest"
+
+. "$HOME/.local/bin/env"
+
+# pnpm
+export PNPM_HOME="/home/ecto/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
