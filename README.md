@@ -11,45 +11,20 @@ This repo consists of all my dotfiles. 🔥 Amazing nvim configuration. Tmux con
 
 # Installation
 
-First, commit the corosponding aliases to your .bashrc or .zsh:
+First, clone this repo to your home directory:
 
 ```
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+git clone git@github.com:realecto/.dotfiles.git
+```
+Then, using GNU stow you can either stow all the files as is:
+```
+stow .
+```
+Or stow only what you need:
 ```
 
-Then, you run the following to prevent recursion errors:
-
 ```
-echo ".cfg" >> .gitignor
-```
-
-Clone this repo:
-
-```
-git clone --bare git@github.com:realecto/.dotfiles.git $HOME/.cfg
-```
-
-Define the aliases in the current shell scope:
-
-```
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-```
-
-Checkout the repo content:
-
-```
-config checkout
-```
-
-If there are issues, resolve them with the commandline output.
-
-Then set the config tag to ignore untracked files:
-
-```
-config config --local status.showUntrackedFiles no
-```
-
-Done! You can now use the files.
+Done!
 
 # Setting up your own repo
 
