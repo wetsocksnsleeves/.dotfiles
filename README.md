@@ -16,13 +16,9 @@ First, clone this repo to your home directory:
 ```
 git clone git@github.com:realecto/.dotfiles.git
 ```
-Then, using GNU stow you can either stow all the files as is:
+Then, using GNU stow you can stow the particular modules you want:
 ```
-stow .
-```
-Or stow only what you need:
-```
-
+stow tmux nvim zsh
 ```
 Done!
 
