@@ -5,7 +5,6 @@ This repo consists of all my dotfiles. 🔥 Amazing nvim configuration. Tmux con
 # Table of contents
 
 [Installation](#installation)\
-[Want your own?](#setting-up-your-own-repo)\
 [Overview](#overview)\
 [Keybinds](#key-binds)
 
@@ -21,22 +20,6 @@ Then, using GNU stow you can stow the particular modules you want:
 stow tmux nvim zsh
 ```
 Done!
-
-# Setting up your own repo
-
-Just like any old local repo to remote setup. You run:
-
-```
-config remote add origin <repo url>
-```
-
-And the first push, use the -u flag to set the upstream as the main branch:
-
-```
-config push -u origin main
-```
-
-This project is based of the method in this [Atlassian Blog](https://www.atlassian.com/git/tutorials/dotfiles)
 
 # Overview
 
