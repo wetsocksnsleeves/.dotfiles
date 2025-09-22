@@ -57,4 +57,4 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- j+l to Esc
-vim.keymap.set({"i", "v"}, "jk", "<Esc>")
+vim.keymap.set({"i", "v"}, "<C-c>", "<Esc>")
