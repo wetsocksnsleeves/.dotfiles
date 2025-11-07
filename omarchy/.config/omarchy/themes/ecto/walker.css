@@ -1,0 +1,11 @@
+@define-color selected-text #e7e9ea;
+@define-color text #71767b;
+@define-color base #000000;
+@define-color border #2E3134FF;
+@define-color foreground #71767b;
+@define-color background #000000;
+
+window .box-wrapper {
+  border: 1px solid lighter(@border);
+  border-radius: 8px;
+}
