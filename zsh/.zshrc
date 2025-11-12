@@ -31,3 +31,4 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias sz="source ~/.zshrc"
 alias mknextpj="npx create-next-app@latest"
 alias aenv="source .venv/bin/activate"
+alias dex="find /usr/share/applications ~/.local/share/applications -name '*.desktop' | fzf"

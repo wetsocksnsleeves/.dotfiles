@@ -1,5 +1,17 @@
 return {
     {
+        "williamboman/mason.nvim",
+        lazy = false,
+        opts = {
+            ensure_installed = {
+                "ts_ls",
+            },
+        },
+        config = function()
+            require("mason").setup()
+        end,
+    },
+    {
         "jay-babu/mason-null-ls.nvim",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
@@ -13,5 +25,5 @@ return {
                 ensure_installed = { "clang-format", "black", "pylint" },
             })
         end,
-    },
+    }
 }

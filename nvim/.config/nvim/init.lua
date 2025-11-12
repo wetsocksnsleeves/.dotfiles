@@ -53,6 +53,7 @@ vim.diagnostic.config({
 
 -- Load plugins, vim options, and lazy configuration
 require("vim-options")
+require("lsp-config")
 require("lazy").setup(
     "plugins",
     {
