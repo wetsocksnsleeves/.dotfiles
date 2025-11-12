@@ -34,8 +34,9 @@ Done!
 
 ## Lsps, Linters, and Formatters
 
-- nvim-lspconfig controls the LSPs making sure they all work.
-- Mason is a manager for LSPs, Linters, and Formatters. Easily download inside nvim.
+- Uses nvim's built in lsp.
+- nvim-lspconfig provides default lsp configurations.
+- Mason is a manager for LSPs, Linters, and Formatters.
 - Mason-null-ls is to allow Mason and none-ls to work together
 - None-ls is to make linters and formatters work.
 
