@@ -1,100 +1,41 @@
 return {
     {
-        "hrsh7th/cmp-nvim-lsp",
-    },
-    {
-        "hrsh7th/cmp-buffer", -- Add this for buffer completions
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        dependencies = {
-            "saadparwaiz1/cmp_luasnip",
-            "rafamadriz/friendly-snippets",
-        },
+        'saghen/blink.cmp',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+
+        version = '1.*',
+
         config = function()
-            local luasnip = require("luasnip")
-            luasnip.filetype_extend("javascriptreact", { "html" })
-            luasnip.filetype_extend("typescriptreact", { "html" })
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-    },
-    {
-        "hrsh7th/nvim-cmp",
-        config = function()
-            local cmp = require("cmp")
-            local luasnip = require('luasnip')
+            local blink = require("blink.cmp")
+            blink.setup({
+                keymap = { preset = 'super-tab' },
 
-            local function cmp_prev(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                elseif luasnip.locally_jumpable(1) then
-                    luasnip.jump(1)
-                else
-                    fallback()
-                end
-            end
-
-            local function cmp_next(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                elseif luasnip.locally_jumpable(-1) then
-                    luasnip.jump(-1)
-                else
-                    fallback()
-                end
-            end
-
-            cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
+                appearance = {
+                    -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+                    -- Adjusts spacing to ensure icons are aligned
+                    nerd_font_variant = 'mono'
                 },
-                window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
-                },
-                -- Super tab like mapping from documentation
-                mapping = ({
-                    ['<CR>'] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            if luasnip.expandable() then
-                                luasnip.expand()
-                            else
-                                cmp.confirm({
-                                    select = true,
-                                })
-                            end
-                        else
-                            fallback()
-                        end
-                    end),
 
-                    ["<Tab>"] = cmp.mapping(cmp_prev, { "i", "s" }),
-                    ["<S-Tab>"] = cmp.mapping(cmp_next, { "i", "s" }),
-                    ["<Down>"] = cmp.mapping(cmp_prev, { "i", "s" }),
-                    ["<Up>"] = cmp.mapping(cmp_next, { "i", "s" }),
-                }),
-                sources = { -- Modified sources configuration
-                    { name = "nvim_lsp", priority = 1000 },
-                    { name = "luasnip",  priority = 750 },
-                    {
-                        name = "buffer",
-                        priority = 500,
-                        option = {
-                            get_bufnrs = function()
-                                return vim.api.nvim_list_bufs()
-                            end,
-                        },
-                    },
+                -- Show the documentation pop ups
+                completion = {
+                    documentation = { auto_show = true },
+                    menu = {
+                        border = "rounded",
+                    }
                 },
-                formatting = {
-                    format = require("tailwindcss-colorizer-cmp").formatter,
-                }
+
+                -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+                fuzzy = { implementation = "prefer_rust_with_warning" },
             })
+
+            -- Transparency configurations
+            local float_border = vim.api.nvim_get_hl(0, {name = "FloatBorder"})
+            if float_border.fg then
+                vim.api.nvim_set_hl(0, "BlinkCmpMenu", {fg = float_border.fg, bg="none"})
+                vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", {fg = float_border.fg, bg="none"})
+                vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", {fg = float_border.fg, bg="none"})
+                vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", {bg = float_border.fg})
+            end
         end,
-        dependencies = {
-            "hrsh7th/cmp-buffer", -- Add dependency here as well
-        },
     },
 }

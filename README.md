@@ -42,14 +42,13 @@ Done!
 
 ### Note
 
-Mason is useful but sometimes the package it installs is broken, so it's better to just install it our self with yarn.
-
-**Yarn install these for default configuration:**
+**npm packages used:**
 
 - eslint_d
 - pyright
 - prettier
 - @tailwindcss/language-server
+- typescript-language-server
 
 ## My ideal environment setup
 

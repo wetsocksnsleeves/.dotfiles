@@ -32,3 +32,5 @@ alias sz="source ~/.zshrc"
 alias mknextpj="npx create-next-app@latest"
 alias aenv="source .venv/bin/activate"
 alias dex="find /usr/share/applications ~/.local/share/applications -name '*.desktop' | fzf"
+
+. "$HOME/.local/share/../bin/env"

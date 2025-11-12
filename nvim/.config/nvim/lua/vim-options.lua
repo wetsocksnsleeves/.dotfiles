@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
+vim.opt.termguicolors = true
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
@@ -56,5 +57,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- j+l to Esc
+-- f+d to Esc
+vim.keymap.set({"i", "v"}, "fd", "<Esc>")
 vim.keymap.set({"i", "v"}, "<C-c>", "<Esc>")

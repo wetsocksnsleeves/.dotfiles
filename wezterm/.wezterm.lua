@@ -52,7 +52,7 @@ if wezterm.target_triple == "x86_64-unknown-linux-gnu" then
 	config.hide_tab_bar_if_only_one_tab = true
 	config.window_decorations = "NONE"
 	config.window_background_opacity = 0.6
-	config.macos_window_background_blur = 50
+	config.kde_window_background_blur = true
 
 	config.window_padding = {
 		left = "3cell",

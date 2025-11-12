@@ -1,19 +1,32 @@
 return {
     {
-        "xiyaowong/transparent.nvim",
+        "rebelot/kanagawa.nvim",
         config = function()
-            require("transparent").setup({
-                extra_groups = { "FloatBorder", "NormalFloat", "TelescopeBorder" },
-            })
-            vim.cmd("highlight LazyH1 guifg=#ffffff")
+            require("kanagawa").load("dragon")
         end
     },
     {
-        "rebelot/kanagawa.nvim",
-        name = "kanagawa",
-        priority = 1000,
+        "xiyaowong/transparent.nvim",
+        dependencies = {
+            "rebelot/kanagawa",
+        },
         config = function()
-            vim.cmd.colorscheme "kanagawa-dragon"
-        end
-    }
+            vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {},
+                { "FloatBorder", "NormalFloat", "TelescopeBorder"})
+
+            -- Hot fix for kanagawa dragon
+            local M = require("transparent")
+            local original_toggle = M.toggle
+
+            M.toggle = function(opt)
+              original_toggle(opt)
+
+              -- Explicitly reload the *Dragon* variant
+              vim.cmd.colorscheme("kanagawa-dragon")
+
+              -- Re-clear Kanagawa backgrounds
+              require("transparent").clear_prefix("kanagawa")
+            end
+        end,
+    },
 }
