@@ -66,3 +66,14 @@ require("lazy").setup(
     }
 )
 require("floating-terminal")
+
+-- Load last used colorscheme
+local theme_file = vim.fn.stdpath("data") .. "/colorscheme.conf"
+
+if vim.fn.filereadable(theme_file) == 1 then
+  local scheme = vim.fn.readfile(theme_file)[1]
+  if scheme and #scheme > 0 then
+    pcall(vim.cmd, "colorscheme " .. scheme)
+  end
+end
+

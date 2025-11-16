@@ -6,6 +6,20 @@ vim.lsp.enable({
     "ts_ls",
     "tailwindcss",
     "pyright",
+    "clangd",
+})
+
+local severity = vim.diagnostic.severity
+
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [severity.ERROR] = "󰅜 ",
+            [severity.WARN] = " ",
+            [severity.HINT] = "󰠠 ",
+            [severity.INFO] = " ",
+        }
+    }
 })
 
 -- Key bindings

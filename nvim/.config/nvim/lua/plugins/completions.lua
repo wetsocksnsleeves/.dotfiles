@@ -28,14 +28,6 @@ return {
                 fuzzy = { implementation = "prefer_rust_with_warning" },
             })
 
-            -- Transparency configurations
-            local float_border = vim.api.nvim_get_hl(0, {name = "FloatBorder"})
-            if float_border.fg then
-                vim.api.nvim_set_hl(0, "BlinkCmpMenu", {fg = float_border.fg, bg="none"})
-                vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", {fg = float_border.fg, bg="none"})
-                vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", {fg = float_border.fg, bg="none"})
-                vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", {bg = float_border.fg})
-            end
         end,
     },
 }

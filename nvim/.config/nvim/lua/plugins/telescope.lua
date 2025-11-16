@@ -11,6 +11,33 @@ return {
             vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
             vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
             vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Find Symbols' })
+
+            vim.keymap.set("n", "<leader>ct", function()
+                local theme_file = vim.fn.stdpath("data") .. "/colorscheme.conf"
+
+                require("telescope.builtin").colorscheme({
+                    enable_preview = true,
+                    attach_mappings = function(prompt_bufnr, map)
+                        local actions = require("telescope.actions")
+                        local action_state = require("telescope.actions.state")
+
+                        actions.select_default:replace(function()
+                            actions.close(prompt_bufnr)
+
+                            local selection = action_state.get_selected_entry()
+                            local scheme = selection.value
+
+                            -- Apply colorscheme
+                            vim.cmd("colorscheme " .. scheme)
+                            vim.fn.writefile({ scheme }, theme_file)
+                        end)
+
+                        return true
+                    end,
+                })
+            end)
+
+
             vim.keymap.set('n', '<leader>en', function()
                 builtin.find_files {
                     cwd = vim.fn.stdpath("config")

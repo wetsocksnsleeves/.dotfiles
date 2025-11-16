@@ -14,6 +14,7 @@ vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.scrolloff = 8
 vim.opt.splitright = true
+vim.opt.showmode = false
 
 vim.diagnostic.config({ update_in_insert = true })
 
@@ -60,3 +61,4 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- f+d to Esc
 vim.keymap.set({"i", "v"}, "fd", "<Esc>")
 vim.keymap.set({"i", "v"}, "<C-c>", "<Esc>")
+

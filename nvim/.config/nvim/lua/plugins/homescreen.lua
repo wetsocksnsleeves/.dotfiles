@@ -42,10 +42,9 @@ return {
 			dashboard.button("e", "   New file", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("r", "   Recent", ":Telescope oldfiles<CR>"),
 			dashboard.button("c", "   Config", ":e $MYVIMRC <CR>"),
-			dashboard.button("m", "󱌣   Mason", ":Mason<CR>"),
 			dashboard.button("l", "󰒲   Lazy", ":Lazy<CR>"),
 			dashboard.button("u", "󰂖   Update plugins", "<cmd>lua require('lazy').sync()<CR>"),
-			dashboard.button("q", "   Quit NVIM", ":qa<CR>"),
+			dashboard.button("q", "󰈆   Quit NVIM", ":qa<CR>"),
 		}
  
 		dashboard.opts.opts.noautocmd = true
@@ -56,12 +55,14 @@ return {
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "LazyVimStarted",
 			callback = function()
+                local username = os.getenv("USER")
 				local stats = require("lazy").stats()
 				local count = (math.floor(stats.startuptime * 100) / 100)
 				dashboard.section.footer.val = {
+					" ",
 					"󱐌 " .. stats.count .. " plugins loaded in " .. count .. " ms",
 					" ",
-					"             ecto",
+					"             " .. username,
 				}
 				pcall(vim.cmd.AlphaRedraw)
 			end,
