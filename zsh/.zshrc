@@ -22,6 +22,13 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
+# pnpm
+export PNPM_HOME="/home/ecto/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 # Default configurations
 #   - Add other configurations to the local file
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

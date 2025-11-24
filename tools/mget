@@ -1,0 +1,57 @@
+#!/bin/bash
+
+url="$1"
+
+if [[ -z "$url" ]]; then
+    echo "Usage: mget URL"
+    exit 1
+fi
+
+read -p "Specify format? (y/N): " answer
+case "${answer,,}" in
+    y|yes)
+        formats=$(yt-dlp -F "$url")
+        choice=$(
+            echo "$formats" | awk '/Available formats/{p=1; next} p' | 
+            fzf --header-first --layout=reverse --header-lines=2
+        )
+
+        choice=$(echo "$choice" | awk '{print $1}')
+
+        read -p "Specify output directory? (y/N): " answer
+
+        case "${answer,,}" in
+            y|yes)
+                read -p "Download to: " path
+                path="${path/#\~/$HOME}"
+                if [[ -e "$path" ]]; then
+                    exec yt-dlp -f "$choice" -o "$path/%(title)s.%(ext)s" "$url"
+                    exit 0
+                else
+                    echo "Invalid path"
+                    exit 1
+                fi
+        esac
+
+        exec yt-dlp -f "$choice" "$url"
+        exit 0
+        ;;
+esac
+
+read -p "Specify output directory? (y/N): " answer
+
+case "${answer,,}" in
+    y|yes)
+        read -p "Download to: " path
+        path="${path/#\~/$HOME}"
+        if [[ -e "$path" ]]; then
+            exec yt-dlp -o "$path/%(title)s.%(ext)s" "$url"
+            exit 0
+        else
+            echo "Invalid path"
+            exit 1
+        fi
+esac
+
+exec yt-dlp "$url"
+

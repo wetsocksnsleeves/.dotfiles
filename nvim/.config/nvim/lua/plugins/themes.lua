@@ -3,7 +3,7 @@ return {
         "rebelot/kanagawa.nvim",
     },
     {
-        dir = vim.fn.expand("~/Code/bleakvoid.nvim/")
+        "wetsocksnsleeves/bleakvoid.nvim",
     },
     {
         "slugbyte/lackluster.nvim",
