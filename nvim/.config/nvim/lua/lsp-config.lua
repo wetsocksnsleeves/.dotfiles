@@ -1,4 +1,4 @@
-vim.lsp.set_log_level 'debug'
+-- vim.lsp.set_log_level 'debug'
 
 -- Using nvim-lspconfig for default lsp configurations
 vim.lsp.enable({
@@ -7,6 +7,7 @@ vim.lsp.enable({
     "tailwindcss",
     "pyright",
     "clangd",
+    "ruby_lsp",
 })
 
 local severity = vim.diagnostic.severity

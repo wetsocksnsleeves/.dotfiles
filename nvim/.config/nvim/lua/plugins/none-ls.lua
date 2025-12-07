@@ -20,6 +20,8 @@ return {
                 }),
                 null_ls.builtins.diagnostics.pylint.with({
                 }),
+                null_ls.builtins.diagnostics.rubocop,
+                null_ls.builtins.formatting.rubocop
             },
             autostart = true,
         })
