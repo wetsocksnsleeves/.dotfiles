@@ -29,18 +29,18 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# Default configurations
-#   - Add other configurations to the local file
+# Default configurations; Put local configs in .zshrc.local
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
+# opencode
+export PATH=/home/ecto/.opencode/bin:$PATH
+
+eval "$(zoxide init zsh)"
+. "$HOME/.local/share/../bin/env"
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias sz="source ~/.zshrc"
 alias mknextpj="npx create-next-app@latest"
 alias aenv="source .venv/bin/activate"
 alias dex="find /usr/share/applications ~/.local/share/applications -name '*.desktop' | fzf | xargs sudo nvim"
-
-. "$HOME/.local/share/../bin/env"
-
-# opencode
-export PATH=/home/ecto/.opencode/bin:$PATH
