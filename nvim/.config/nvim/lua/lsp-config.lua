@@ -8,6 +8,7 @@ vim.lsp.enable({
     "pyright",
     "clangd",
     "ruby_lsp",
+    "sorbet",
 })
 
 local severity = vim.diagnostic.severity
