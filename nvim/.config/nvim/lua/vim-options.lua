@@ -61,4 +61,3 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- f+d to Esc
 vim.keymap.set({"i", "v"}, "fd", "<Esc>")
 vim.keymap.set({"i", "v"}, "<C-c>", "<Esc>")
-
