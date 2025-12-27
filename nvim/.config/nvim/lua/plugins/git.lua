@@ -25,7 +25,7 @@ return {
         config = function()
             local gitsigns = require("gitsigns")
             gitsigns.setup({
-                vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+                vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame, {desc = "Get current line blame"})
             })
         end
     },
@@ -39,7 +39,7 @@ return {
                     else
                         vim.cmd('DiffviewClose')
                     end
-                end)
+                end, {desc = "Show git diff"})
             })
         end
     }

@@ -3,9 +3,9 @@ return {
     config = function()
         require("smear_cursor").setup({
             cursor_color = "#ffffff",
-            stifness = 0.8,
-            trailing_stiffness = 0.5,
-            distance_stop_animating = 0.5
+            stifness = 0.9,
+            trailing_stiffness = 0.8,
+            distance_stop_animating = 0.3
         })
     end
 }

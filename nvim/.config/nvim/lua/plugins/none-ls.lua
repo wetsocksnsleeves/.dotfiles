@@ -28,7 +28,7 @@ return {
         vim.keymap.set("n", "<leader>gf", function()
             print("File formatted")
             vim.lsp.buf.format()
-        end)
+        end, { desc = "Format file" })
 
         -- Format on write
         -- vim.api.nvim_create_autocmd("BufWritePre", {

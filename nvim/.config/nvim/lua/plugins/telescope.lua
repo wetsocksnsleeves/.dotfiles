@@ -7,8 +7,8 @@ return {
         },
         config = function()
             local builtin = require("telescope.builtin")
-            vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+            vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = "Find Files"})
+            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live Grep"})
             vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
             vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Find Symbols' })
 
@@ -35,14 +35,16 @@ return {
                         return true
                     end,
                 })
-            end)
+            end,
+            { desc = "Change Themes"}
+        )
 
 
             vim.keymap.set('n', '<leader>en', function()
                 builtin.find_files {
                     cwd = vim.fn.stdpath("config")
                 }
-            end)
+            end, {desc = "Neovim Configuration Files"})
             vim.keymap.set('n', '<leader>fh', function()
                 require('telescope.builtin').help_tags({
                     prompt_title = "Help",

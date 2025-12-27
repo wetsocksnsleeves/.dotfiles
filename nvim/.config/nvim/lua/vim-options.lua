@@ -24,7 +24,7 @@ vim.diagnostic.config({ update_in_insert = true })
 vim.keymap.set('n', "<F5>", ":!python3 %<CR>")
 
 -- Quick script permissions
-vim.keymap.set('n', "<leader>fx", ":!chmod +x %<CR>")
+vim.keymap.set('n', "<leader>fx", ":!chmod +x %<CR>", {desc = "Executable"})
 
 -- Move through wrapped lines like normal
 vim.keymap.set('n', 'k', function()
@@ -36,15 +36,15 @@ vim.keymap.set('n', 'j', function()
 end, { expr = true })
 
 -- Copy pasta
-vim.keymap.set("x", "<leader>p", "\"_dP")         -- paste without resetting buffer
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')  -- yank to clipboard
-vim.keymap.set({ "n", "v" }, "<leader>yy", '"+y') -- yank line to clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')  -- delete without overriding buffer
-vim.keymap.set({ "n", "v" }, "<leader>dd", '"_d') -- delete line without overriding buffer
+vim.keymap.set("x", "<leader>p", "\"_dP", {desc = "Paste without reset"})         -- paste without resetting buffer
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', {desc = "Yank to clipboard"})  -- yank to clipboard
+vim.keymap.set({ "n", "v" }, "<leader>yy", '"+y', {desc = "Yank line to clipboard"}) -- yank line to clipboard
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', {desc = "Delete to void"})  -- delete without overriding buffer
+vim.keymap.set({ "n", "v" }, "<leader>dd", '"_d', {desc = "Delete line to void"}) -- delete line without overriding buffer
 
 -- Find and replace + Un-highlight
-vim.keymap.set('n', '<leader>fr', ':%s//g<left><left>', { noremap = true })
-vim.keymap.set('n', "<leader>nh", ":noh<CR>")
+vim.keymap.set('n', '<leader>fr', ':%s//g<left><left>', { noremap = true, desc = "Find and replace" })
+vim.keymap.set('n', "<leader>nh", ":noh<CR>", {desc = "Un-highlight"})
 
 -- Line movement with indent
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

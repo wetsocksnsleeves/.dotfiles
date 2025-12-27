@@ -21,13 +21,17 @@ return {
                     documentation = { auto_show = true },
                     menu = {
                         border = "rounded",
-                    }
+                    },
+                    -- list = {
+                    --     selection = {
+                    --         preselect = false,
+                    --     },
+                    -- },
                 },
 
                 -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
                 fuzzy = { implementation = "prefer_rust_with_warning" },
             })
-
         end,
     },
 }
