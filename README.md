@@ -38,13 +38,10 @@ Done!
 1. Installing wget, curl, git, ripgrep, and zsh.
 2. Installing Oh My Zsh. And apply my .zshrc
 3. Install Neovim
-4. Install Node.js, fnm, and yarn
-5. Install relevant yarn [packages](#note)
-6. Pyenv + Python build dependencies
+4. Install Node.js, fnm, and pnpm
+5. Install relevant npm [packages](#note)
+6. mise
 7. GNU gcc
-8. Python3
-9. Hugo
-10. Deno
 11. Tmux
 12. My dotfiles
 
