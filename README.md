@@ -23,23 +23,6 @@ Done!
 
 # Overview
 
-## What's being used
-
-💤 Lazy.nvim the Package manager\
-📁 Neo-tree as File explorer\
-🔭 Telescope as File finder\
-🔔 Lua Line for Status bar\
-🤓 Completions and Docstrings\
-🌊 Kanagawa themed
-
-## Lsps, Linters, and Formatters
-
-- Uses nvim's built in lsp.
-- nvim-lspconfig provides default lsp configurations.
-- Mason is a manager for LSPs, Linters, and Formatters.
-- Mason-null-ls is to allow Mason and none-ls to work together
-- None-ls is to make linters and formatters work.
-
 ### Note
 
 **npm packages used:**
