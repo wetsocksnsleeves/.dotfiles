@@ -1,6 +1,6 @@
 # My Dotfiles
 
-This repo consists of all my dotfiles. 🔥 Amazing nvim configuration. Tmux configurations and all that stuff.
+Configurations I use to LARP as cracked so I eventually am cracked.
 
 # Table of contents
 
