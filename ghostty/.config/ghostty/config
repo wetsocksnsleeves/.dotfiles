@@ -4,6 +4,7 @@ theme = bleakvoid
 # Colors
 background = 000000
 background-opacity = 0.5
+background-blur = 20
 
 # Font
 font-family = "JetBrains Mono"
@@ -17,6 +18,7 @@ window-padding-y = 14
 confirm-close-surface=false
 resize-overlay = never
 gtk-toolbar-style = flat
+# maximize = true
 
 # Cursor styling
 cursor-style = "block"
@@ -26,3 +28,6 @@ cursor-style-blink = false
 copy-on-select = clipboard
 app-notifications = no-clipboard-copy
 # custom-shader = shaders/cursor_smear.glsl
+macos-titlebar-style = hidden
+macos-icon = glass 
+macos-option-as-alt = true
