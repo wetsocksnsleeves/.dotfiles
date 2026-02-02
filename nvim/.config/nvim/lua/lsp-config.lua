@@ -10,6 +10,7 @@ vim.lsp.enable({
     "ruby_lsp",
     "sorbet",
     "tinymist",
+    "harper_ls",
 })
 
 local severity = vim.diagnostic.severity
