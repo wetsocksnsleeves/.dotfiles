@@ -25,7 +25,7 @@ return {
         config = function()
             local gitsigns = require("gitsigns")
             gitsigns.setup({
-                vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "Get current line blame" }),
+                vim.keymap.set('n', '<leader>tb', gitsigns.blame, { desc = "Get current line blame" }),
                 vim.keymap.set('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = "Get current word diff" })
             })
         end

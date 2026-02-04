@@ -75,6 +75,43 @@ on-mode-changed = []
     outer.top =        4
     outer.right =      4
 
+# See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+[workspace-to-monitor-force-assignment]
+    1 = 2  # Built-in Retina Display
+    2 = 2
+    3 = 2
+    4 = 2
+    5 = 2
+    6 = 2
+    7 = 2
+    8 = 2
+    9 = 2
+    A = 1  # DELL S3425DW
+    B = 1
+    C = 1
+    D = 1
+    E = 1
+    F = 1
+    G = 1
+    H = 1
+    I = 1
+    J = 1
+    K = 1
+    L = 1
+    M = 1
+    N = 1
+    O = 1
+    Q = 1
+    R = 1
+    S = 1
+    T = 1
+    U = 1
+    V = 1
+    W = 1
+    X = 1
+    Y = 1
+    Z = 1
+
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
@@ -117,6 +154,10 @@ on-mode-changed = []
     alt-j = 'focus down'
     alt-k = 'focus up'
     alt-l = 'focus right'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#focus-monitor
+    alt-ctrl-h = 'focus-monitor left'
+    alt-ctrl-l = 'focus-monitor right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-shift-h = 'move left'

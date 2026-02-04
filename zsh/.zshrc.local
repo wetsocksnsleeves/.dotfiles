@@ -2,7 +2,7 @@
 # [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Initialize mise FIRST before other tools modify PATH
-eval "$(/Users/etao/.local/bin/mise activate zsh)"
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 
 # Zsh Setup
 export ZSH="$HOME/.oh-my-zsh"
@@ -40,18 +40,6 @@ export PATH=/home/ecto/.opencode/bin:$PATH
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-# opencode
-export PATH=/Users/etao/.opencode/bin:$PATH
-. "$HOME/.local/bin/env"
-
-# fnm
-FNM_PATH="/opt/homebrew/opt/fnm/bin"
-if [ -d "$FNM_PATH" ]; then
-  eval "`fnm env`"
-fi
-eval "$(zoxide init zsh)"
-. "$HOME/.local/share/../bin/env"
-
 # Sesh
 function sesh-sessions() {
   {
@@ -78,3 +66,4 @@ alias aenv="source .venv/bin/activate"
 alias dex="find /usr/share/applications ~/.local/share/applications -name '*.desktop' | fzf | xargs sudo nvim"
 alias lgit="lazygit"
 alias cd="z"
+alias pr="gh dash"
