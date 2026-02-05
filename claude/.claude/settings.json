@@ -16,5 +16,9 @@
       "WebSearch"
     ],
     "deny": []
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /home/ecto/.claude/scripts/statusline.sh"
   }
 }
