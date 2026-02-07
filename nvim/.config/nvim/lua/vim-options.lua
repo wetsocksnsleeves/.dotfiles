@@ -62,5 +62,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set({"i", "v"}, "fd", "<Esc>")
 vim.keymap.set({"i", "v"}, "<C-c>", "<Esc>")
 
+
 -- Quality of life
 vim.keymap.set("n", "<leader>gp", "<CMD>let @+ = expand('%:p')<CR>")
