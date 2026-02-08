@@ -1,4 +1,46 @@
 {
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git branch *)",
+      "Bash(ls *)",
+      "Bash(pwd)",
+      "Bash(which *)",
+      "Bash(cat *)",
+      "Bash(fd *)",
+      "Bash(find *)",
+      "Bash(tree *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(file *)",
+      "Bash(stat *)",
+      "Bash(rg *)",
+      "Bash(ack *)",
+      "Bash(echo *)",
+      "Bash(date *)",
+      "Bash(env)",
+      "Bash(printenv *)",
+      "Bash(du *)",
+      "Bash(df *)",
+      "Bash(diff *)",
+      "Bash(sort *)",
+      "Bash(uniq *)",
+      "Bash(cut *)",
+      "Bash(tr *)",
+      "Bash(sed *)",
+      "Bash(awk *)",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": []
+  },
+  "model": "sonnet[1m]",
   "hooks": {
     "Stop": [
       {
@@ -11,5 +53,9 @@
         ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash $HOME/.claude/scripts/statusline.sh"
   }
 }
