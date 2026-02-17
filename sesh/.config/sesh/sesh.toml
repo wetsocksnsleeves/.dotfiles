@@ -1,2 +1,4 @@
+sort_order = ["zoxide", "tmux", "config", "tmuxinator"]
+
 [default_session]
-startup_command = "tmux new-window \\; send-keys 'nvim' Enter \\; split-window -h 'claude' \\; select-pane -L"
+startup_command = "tmux new-window && tmux split-window -h && tmux send-keys 'claude' Enter && tmux send-keys -t :0 'clear' Enter && tmux select-pane -L && tmux send-keys 'nvim' Enter"
