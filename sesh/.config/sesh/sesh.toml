@@ -1,0 +1,2 @@
+[default_session]
+startup_command = "tmux split-window -h 'claude' \\; select-pane -L \\; send-keys 'nvim' Enter"
