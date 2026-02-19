@@ -59,7 +59,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "printf '\\033]777;notify;Claude Code;Permission needed\\007'"
+            "command": "bash $HOME/.claude/scripts/notify_done.sh 'Permission needed'"
           }
         ]
       }
@@ -70,7 +70,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "printf '\\033]777;notify;Claude Code;Tool error - needs attention\\007'"
+            "command": "bash $HOME/.claude/scripts/notify_done.sh 'Tool error - needs attention'"
           }
         ]
       }
