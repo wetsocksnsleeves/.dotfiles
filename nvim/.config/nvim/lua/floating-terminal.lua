@@ -85,6 +85,16 @@ function ToggleFloatTerminal()
     vim.api.nvim_buf_set_keymap(term_buf, 't', '<leader>tt',
         '<C-\\><C-n>:lua ToggleFloatTerminal()<CR>',
         { noremap = true, silent = true })
+
+    -- Terminal mode key binds for tmux navigation - pass through to terminal
+    vim.api.nvim_buf_set_keymap(term_buf, 't', '<C-h>', '<C-h>',
+        { noremap = true, silent = false })
+    vim.api.nvim_buf_set_keymap(term_buf, 't', '<C-j>', '<C-j>',
+        { noremap = true, silent = false })
+    vim.api.nvim_buf_set_keymap(term_buf, 't', '<C-k>', '<C-k>',
+        { noremap = true, silent = false })
+    vim.api.nvim_buf_set_keymap(term_buf, 't', '<C-l>', '<C-l>',
+        { noremap = true, silent = false })
 end
 
 -- Create the command
