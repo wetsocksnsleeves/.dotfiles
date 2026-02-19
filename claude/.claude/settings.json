@@ -63,17 +63,6 @@
           }
         ]
       }
-    ],
-    "PostToolUseFailure": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash $HOME/.claude/scripts/notify_done.sh 'Tool error - needs attention'"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
