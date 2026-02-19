@@ -48,7 +48,29 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude Code finished\" with title \"Claude Code\"'"
+            "command": "bash $HOME/.claude/scripts/notify_done.sh"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '\\033]777;notify;Claude Code;Permission needed\\007'"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '\\033]777;notify;Claude Code;Tool error - needs attention\\007'"
           }
         ]
       }
@@ -57,5 +79,8 @@
   "statusLine": {
     "type": "command",
     "command": "bash $HOME/.claude/scripts/statusline.sh"
+  },
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true
   }
 }
