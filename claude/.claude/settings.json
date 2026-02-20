@@ -40,7 +40,7 @@
     ],
     "deny": []
   },
-  "model": "sonnet[1m]",
+  "model": "haiku",
   "hooks": {
     "Stop": [
       {
@@ -48,7 +48,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude Code finished\" with title \"Claude Code\"'"
+            "command": "bash $HOME/.claude/scripts/notify_done.sh"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/scripts/notify_done.sh 'Permission needed'"
           }
         ]
       }
@@ -57,5 +68,8 @@
   "statusLine": {
     "type": "command",
     "command": "bash $HOME/.claude/scripts/statusline.sh"
+  },
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true
   }
 }
