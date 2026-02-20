@@ -1,69 +1,73 @@
 return {
-    {
-        "nvim-telescope/telescope.nvim",
-        tag = '0.1.5',
-        dependencies = {
-            "nvim-lua/plenary.nvim"
-        },
-        config = function()
-            local builtin = require("telescope.builtin")
-            vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = "Find Files"})
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live Grep"})
-            vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
-            vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Find Symbols' })
-
-            vim.keymap.set("n", "<leader>ct", function()
-                local theme_file = vim.fn.stdpath("data") .. "/colorscheme.conf"
-
-                require("telescope.builtin").colorscheme({
-                    enable_preview = true,
-                    attach_mappings = function(prompt_bufnr, map)
-                        local actions = require("telescope.actions")
-                        local action_state = require("telescope.actions.state")
-
-                        actions.select_default:replace(function()
-                            actions.close(prompt_bufnr)
-
-                            local selection = action_state.get_selected_entry()
-                            local scheme = selection.value
-
-                            -- Apply colorscheme
-                            vim.cmd("colorscheme " .. scheme)
-                            vim.fn.writefile({ scheme }, theme_file)
-                        end)
-
-                        return true
-                    end,
-                })
-            end,
-            { desc = "Change Themes"}
-        )
-
-
-            vim.keymap.set('n', '<leader>en', function()
-                builtin.find_files {
-                    cwd = vim.fn.stdpath("config")
-                }
-            end, {desc = "Neovim Configuration Files"})
-            vim.keymap.set('n', '<leader>fh', function()
-                require('telescope.builtin').help_tags({
-                    prompt_title = "Help",
-                })
-            end, { noremap = true, silent = true, desc = 'Search help documentation' })
-        end
+  {
+    'nvim-telescope/telescope.nvim', version = '*',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        -- optional but recommended
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
-    {
-        "nvim-telescope/telescope-ui-select.nvim",
-        config = function()
-            require("telescope").setup({
-                extensions = {
-                    ["ui-select"] = {
-                        require("telescope.themes").get_dropdown {
-                        }
-                    }
-                }
-            })
-            require("telescope").load_extension("ui-select")
-        end
-    }
+    config = function()
+      local builtin = require("telescope.builtin")
+      local telescope = require("telescope")
+      telescope.setup({})
+      telescope.load_extension("fzf")
+
+      vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = "Find Files" })
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live Grep" })
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
+      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Find Symbols' })
+
+      vim.keymap.set("n", "<leader>ct", function()
+          local theme_file = vim.fn.stdpath("data") .. "/colorscheme.conf"
+
+          require("telescope.builtin").colorscheme({
+            enable_preview = true,
+            attach_mappings = function(prompt_bufnr, map)
+              local actions = require("telescope.actions")
+              local action_state = require("telescope.actions.state")
+
+              actions.select_default:replace(function()
+                actions.close(prompt_bufnr)
+
+                local selection = action_state.get_selected_entry()
+                local scheme = selection.value
+
+                -- Apply colorscheme
+                vim.cmd("colorscheme " .. scheme)
+                vim.fn.writefile({ scheme }, theme_file)
+              end)
+
+              return true
+            end,
+          })
+        end,
+        { desc = "Change Themes" }
+      )
+
+      vim.keymap.set('n', '<leader>en', function()
+        builtin.find_files {
+          cwd = vim.fn.stdpath("config")
+        }
+      end, { desc = "Neovim Configuration Files" })
+      vim.keymap.set('n', '<leader>fh', function()
+        require('telescope.builtin').help_tags({
+          prompt_title = "Help",
+        })
+      end, { noremap = true, silent = true, desc = 'Search help documentation' })
+    end
+  },
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+    config = function()
+      require("telescope").setup({
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+            }
+          }
+        }
+      })
+      require("telescope").load_extension("ui-select")
+    end
+  }
 }
