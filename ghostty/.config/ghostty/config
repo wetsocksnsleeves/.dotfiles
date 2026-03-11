@@ -9,7 +9,7 @@ background-blur = 20
 # Font
 font-family = "JetBrains Mono"
 font-style = Regular
-font-size = 12
+font-size = 16
 
 # Window
 window-theme = ghostty

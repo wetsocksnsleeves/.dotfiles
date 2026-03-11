@@ -1,5 +1,8 @@
 -- vim.lsp.set_log_level 'debug'
 
+-- Load LSP server configs before enabling (cmd overrides, etc.)
+require("plugins.lspconfig")
+
 -- Using nvim-lspconfig for default lsp configurations
 vim.lsp.enable({
     "lua_ls",

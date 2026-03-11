@@ -40,7 +40,14 @@ return {
                     else
                         vim.cmd('DiffviewClose')
                     end
-                end, { desc = "Show git diff" })
+                end, { desc = "Show git diff" }),
+                vim.keymap.set('n', '<leader>vp', function()
+                    if next(require('diffview.lib').views) == nil then
+                        vim.cmd('DiffviewOpen origin/master...HEAD')
+                    else
+                        vim.cmd('DiffviewClose')
+                    end
+                end, { desc = "Show branch diff (PR view)" })
             })
         end
     }
