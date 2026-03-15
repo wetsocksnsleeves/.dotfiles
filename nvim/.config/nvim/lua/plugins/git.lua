@@ -50,5 +50,6 @@ return {
                 end, { desc = "Show branch diff (PR view)" })
             })
         end
-    }
+    },
+    {"github/copilot.vim"},
 }

@@ -14,6 +14,7 @@ vim.lsp.enable({
     "sorbet",
     "tinymist",
     "harper_ls",
+    "copilot"
 })
 
 local severity = vim.diagnostic.severity
