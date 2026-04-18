@@ -21,7 +21,7 @@ return {
           local theme_file = vim.fn.stdpath("data") .. "/colorscheme.conf"
 
           require("telescope.builtin").colorscheme({
-            enable_preview = true,
+            enable_preview = false,
             attach_mappings = function(prompt_bufnr, map)
               local actions = require("telescope.actions")
               local action_state = require("telescope.actions.state")
@@ -33,7 +33,7 @@ return {
                 local scheme = selection.value
 
                 -- Apply colorscheme
-                vim.cmd("colorscheme " .. scheme)
+                pcall(vim.cmd.colorscheme, scheme)
                 vim.fn.writefile({ scheme }, theme_file)
               end)
 
