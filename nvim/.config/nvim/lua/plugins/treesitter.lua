@@ -1,16 +1,16 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  lazy = false,
   build = ":TSUpdate",
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
     "windwp/nvim-ts-autotag",
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = function()
     require("nvim-treesitter.config").setup({
       ensure_installed = { "lua", "javascript", "typescript", "tsx", "html", "embedded_template" },
       highlight = { enable = true },
-      auto_install = true,
       indent = { enable = true },
     })
 
