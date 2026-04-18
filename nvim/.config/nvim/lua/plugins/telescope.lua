@@ -21,7 +21,7 @@ return {
           local theme_file = vim.fn.stdpath("data") .. "/colorscheme.conf"
 
           require("telescope.builtin").colorscheme({
-            enable_preview = false,
+            enable_preview = true,
             attach_mappings = function(prompt_bufnr, map)
               local actions = require("telescope.actions")
               local action_state = require("telescope.actions.state")
