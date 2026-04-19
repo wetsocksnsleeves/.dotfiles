@@ -46,8 +46,7 @@ automatically-unhide-macos-hidden-apps = false
 # This config version is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
 persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C",
-                         "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
-                         "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+                         "D", "E", "F", "G"]
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -77,40 +76,22 @@ on-mode-changed = []
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [workspace-to-monitor-force-assignment]
-    1 = 2  # Built-in Retina Display
-    2 = 2
-    3 = 2
-    4 = 2
-    5 = 2
-    6 = 2
-    7 = 2
-    8 = 2
-    9 = 2
-    A = 1  # DELL S3425DW
-    B = 1
-    C = 1
-    D = 1
-    E = 1
-    F = 1
-    G = 1
-    H = 1
-    I = 1
-    J = 1
-    K = 1
-    L = 1
-    M = 1
-    N = 1
-    O = 1
-    Q = 1
-    R = 1
-    S = 1
-    T = 1
-    U = 1
-    V = 1
-    W = 1
-    X = 1
-    Y = 1
-    Z = 1
+    1 = 1  # DELL S3425DW (external)
+    2 = 1
+    3 = 1
+    4 = 1
+    5 = 1
+    6 = 1
+    7 = 1
+    8 = 1
+    9 = 1
+    A = 2  # Built-in Retina Display
+    B = 2
+    C = 2
+    D = 2
+    E = 2
+    F = 2
+    G = 2
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -179,27 +160,13 @@ on-mode-changed = []
     alt-7 = 'workspace 7'
     alt-8 = 'workspace 8'
     alt-9 = 'workspace 9'
-    alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
+    alt-a = 'workspace A'
     alt-b = 'workspace B'
     alt-c = 'workspace C'
     alt-d = 'workspace D'
     alt-e = 'workspace E'
     alt-f = 'workspace F'
     alt-g = 'workspace G'
-    alt-i = 'workspace I'
-    alt-m = 'workspace M'
-    alt-n = 'workspace N'
-    alt-o = 'workspace O'
-    alt-q = 'workspace Q'
-    alt-r = 'workspace R'
-    # alt-s = 'workspace S'
-    alt-t = 'workspace T'
-    alt-u = 'workspace U'
-    alt-v = 'workspace V'
-    alt-w = 'workspace W'
-    alt-x = 'workspace X'
-    alt-y = 'workspace Y'
-    alt-z = 'workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
@@ -218,20 +185,6 @@ on-mode-changed = []
     alt-shift-e = 'move-node-to-workspace E'
     alt-shift-f = 'move-node-to-workspace F'
     alt-shift-g = 'move-node-to-workspace G'
-    alt-shift-i = 'move-node-to-workspace I'
-    alt-shift-m = 'move-node-to-workspace M'
-    alt-shift-n = 'move-node-to-workspace N'
-    alt-shift-o = 'move-node-to-workspace O'
-    alt-shift-q = 'move-node-to-workspace Q'
-    alt-shift-r = 'move-node-to-workspace R'
-    # alt-shift-s = 'move-node-to-workspace S'
-    alt-shift-t = 'move-node-to-workspace T'
-    alt-shift-u = 'move-node-to-workspace U'
-    alt-shift-v = 'move-node-to-workspace V'
-    alt-shift-w = 'move-node-to-workspace W'
-    alt-shift-x = 'move-node-to-workspace X'
-    alt-shift-y = 'move-node-to-workspace Y'
-    alt-shift-z = 'move-node-to-workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'

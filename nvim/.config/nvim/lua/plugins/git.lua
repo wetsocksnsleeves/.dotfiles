@@ -31,25 +31,26 @@ return {
         end
     },
     {
-        "sindrets/diffview.nvim",
-        config = function()
-            require("diffview").setup({
-                vim.keymap.set('n', '<leader>vd', function()
-                    if next(require('diffview.lib').views) == nil then
-                        vim.cmd('DiffviewOpen')
+        'axkirillov/unified.nvim',
+        opts = {},
+        keys = {
+            {
+                '<leader>vd',
+                function() require('unified').toggle() end,
+                desc = "Show git diff",
+            },
+            {
+                '<leader>vp',
+                function()
+                    if require('unified.state').is_active() then
+                        vim.cmd('Unified reset')
                     else
-                        vim.cmd('DiffviewClose')
+                        vim.cmd('Unified origin/master')
                     end
-                end, { desc = "Show git diff" }),
-                vim.keymap.set('n', '<leader>vp', function()
-                    if next(require('diffview.lib').views) == nil then
-                        vim.cmd('DiffviewOpen origin/master...HEAD')
-                    else
-                        vim.cmd('DiffviewClose')
-                    end
-                end, { desc = "Show branch diff (PR view)" })
-            })
-        end
+                end,
+                desc = "Show branch diff (PR view)",
+            },
+        },
     },
     {"github/copilot.vim"},
 }
