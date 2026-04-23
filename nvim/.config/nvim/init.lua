@@ -1,3 +1,11 @@
+-- Copilot: unbind Tab (used by blink.cmp), accept with <C-y> instead
+vim.g.copilot_no_tab_map = true
+vim.keymap.set("i", "<C-y>", 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false,
+    silent = true,
+})
+
 -- Lazy setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

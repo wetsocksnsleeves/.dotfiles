@@ -24,33 +24,31 @@ return {
         "lewis6991/gitsigns.nvim",
         config = function()
             local gitsigns = require("gitsigns")
-            gitsigns.setup({
-                vim.keymap.set('n', '<leader>tb', gitsigns.blame, { desc = "Get current line blame" }),
-                vim.keymap.set('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = "Get current word diff" })
-            })
+            gitsigns.setup()
+            vim.keymap.set('n', '<leader>tb', gitsigns.blame, { desc = "Get current line blame" })
+            vim.keymap.set('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = "Get current word diff" })
         end
     },
     {
-        'axkirillov/unified.nvim',
-        opts = {},
-        keys = {
-            {
-                '<leader>vd',
-                function() require('unified').toggle() end,
-                desc = "Show git diff",
-            },
-            {
-                '<leader>vp',
-                function()
-                    if require('unified.state').is_active() then
-                        vim.cmd('Unified reset')
+        "sindrets/diffview.nvim",
+        config = function()
+            require("diffview").setup({
+                vim.keymap.set('n', '<leader>vd', function()
+                    if next(require('diffview.lib').views) == nil then
+                        vim.cmd('DiffviewOpen')
                     else
-                        vim.cmd('Unified origin/master')
+                        vim.cmd('DiffviewClose')
                     end
-                end,
-                desc = "Show branch diff (PR view)",
-            },
-        },
+                end, { desc = "Show git diff" }),
+                vim.keymap.set('n', '<leader>vp', function()
+                    if next(require('diffview.lib').views) == nil then
+                        vim.cmd('DiffviewOpen origin/master...HEAD')
+                    else
+                        vim.cmd('DiffviewClose')
+                    end
+                end, { desc = "Show branch diff (PR view)" })
+            })
+        end
     },
     {"github/copilot.vim"},
 }
