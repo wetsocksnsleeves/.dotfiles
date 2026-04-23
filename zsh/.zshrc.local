@@ -61,12 +61,15 @@ bindkey -M viins '\es' sesh-sessions
 # Initialisations
 eval "$(zoxide init zsh)"
 
-# Aliases
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias sz="source ~/.zshrc"
-alias mknextpj="npx create-next-app@latest"
-alias aenv="source .venv/bin/activate"
-alias dex="find /usr/share/applications ~/.local/share/applications -name '*.desktop' | fzf | xargs sudo nvim"
-alias lgit="lazygit"
+# Modern Tools
 alias cd="z"
-alias pr="gh dash"
+
+# Git
+alias glg="lazygit"
+alias gpr="gh dash"
+alias glgc="lazygit -p ~/.dotfiles"
+
+# Aliases
+alias sz="source ~/.zshrc"
+alias aenv="source .venv/bin/activate"
+alias mknextpj="npx create-next-app@latest"
