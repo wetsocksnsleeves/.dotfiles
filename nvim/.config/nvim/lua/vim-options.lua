@@ -64,4 +64,7 @@ vim.keymap.set({"i", "v"}, "<C-c>", "<Esc>")
 
 
 -- Quality of life
+-- Copy file path to clipboard
 vim.keymap.set("n", "<leader>gp", "<CMD>let @+ = expand('%:p')<CR>")
+-- Copy file path and line number to clipboard
+vim.keymap.set("n", "<leader>gl", "<CMD>let @+ = expand('%:p') . ':' . line('.')<CR>")
