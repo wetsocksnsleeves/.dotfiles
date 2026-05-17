@@ -46,11 +46,6 @@ if is_wsl() then
     }
 end
 
--- Disable inlay hints
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-})
-
 vim.diagnostic.config({
     underline = true,         -- Enable underlines
     virtual_text = false,     -- Disable virtual text (if you don't want it)
@@ -86,4 +81,3 @@ if file then
     pcall(vim.cmd.colorscheme, scheme)
   end
 end
-
