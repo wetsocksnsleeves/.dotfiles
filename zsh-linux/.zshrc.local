@@ -57,6 +57,13 @@ bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
 
+# Mise
+echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
+
+# Git
+alias glg="lazygit"
+alias glgc="lazygit -p $HOME/.dotfiles"
+
 # Aliases
 alias sz="source ~/.zshrc"
 alias mknextpj="npx create-next-app@latest"

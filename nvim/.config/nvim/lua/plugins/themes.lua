@@ -9,6 +9,9 @@ return {
     "slugbyte/lackluster.nvim",
     lazy = false,
   },
+  {
+    "rose-pine/neovim",
+  },
   { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
   {
     "vague-theme/vague.nvim",
