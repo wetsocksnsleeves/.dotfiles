@@ -12,7 +12,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Vim keymaps
 bindkey -v
-bindkey -v 'fd' vi-cmd-mode
 
 # Visual cursor indicator
 function zle-keymap-select() {
@@ -68,6 +67,8 @@ alias cd="z"
 alias glg="lazygit"
 alias gpr="gh dash"
 alias glgc="lazygit -p ~/.dotfiles"
+alias gd="git diff @{u} | diffnav"
+alias gdp="git diff master...HEAD | diffnav"
 
 # Aliases
 alias sz="source ~/.zshrc"

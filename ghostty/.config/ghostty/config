@@ -7,7 +7,7 @@ background-opacity = 0.5
 background-blur = 20
 
 # Font
-font-family = "JetBrains Mono"
+font-family = "ZedMonoNerdFontMono"
 font-style = Regular
 font-size = 16
 
