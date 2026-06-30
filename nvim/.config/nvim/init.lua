@@ -81,4 +81,3 @@ if file then
     pcall(vim.cmd.colorscheme, scheme)
   end
 end
-
