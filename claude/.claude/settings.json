@@ -1,7 +1,29 @@
 {
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true,
+    "shopify-ai-toolkit@claude-plugins-official": false,
+    "typescript-lsp@claude-plugins-official": true
+  },
   "env": {
     "_ZO_DOCTOR": "0"
   },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash '/Users/etao/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ]
+  },
+  "model": "opus[1m]",
+  "outputStyle": "custom-claude-persona",
   "permissions": {
     "allow": [
       "Read",
@@ -43,40 +65,10 @@
     ],
     "deny": []
   },
-  "hooks": {
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash $HOME/.claude/scripts/notify_done.sh"
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash $HOME/.claude/scripts/notify_done.sh 'Permission needed'"
-          }
-        ]
-      }
-    ]
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "bash $HOME/.claude/scripts/statusline.sh"
-  },
-  "enabledPlugins": {
-    "lua-lsp@claude-plugins-official": true,
-    "ruby-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
-  },
-  "outputStyle": "custom-claude-persona",
   "skipAutoPermissionPrompt": true,
+  "statusLine": {
+    "command": "bash $HOME/.claude/scripts/statusline.sh",
+    "type": "command"
+  },
   "tui": "fullscreen"
 }

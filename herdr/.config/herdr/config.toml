@@ -3,9 +3,9 @@
 
 [theme]
 # tmux: set -g @plugin 'catppuccin/tmux' (@catppuccin_flavor "mocha")
-name = "catppuccin"
+name = "vesper"
 # Follow the host terminal's light/dark appearance.
-auto_switch = true
+auto_switch = false
 dark_name = "catppuccin"          # mocha
 light_name = "catppuccin-latte"
 
@@ -30,3 +30,10 @@ new_tab = "prefix+c"
 # Notes on non-binding tmux settings (already herdr defaults, no config needed):
 #   set -g mouse on                -> [ui] mouse_capture = true (default)
 #   set-window-option mode-keys vi -> navigate mode uses h/j/k/l by default
+
+[ui.toast]
+delivery = "system"
+
+[ui]
+pane_gaps = false
+agent_panel_sort = "spaces"
