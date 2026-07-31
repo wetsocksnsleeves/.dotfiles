@@ -57,8 +57,8 @@ bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
 
-# Mise
-echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
+# mise
+eval "$(~/.local/bin/mise activate zsh)"
 
 # Git
 alias glg="lazygit"
