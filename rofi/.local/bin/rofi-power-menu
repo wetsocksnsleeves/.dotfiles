@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+choice=$(printf 'Lock\nLogout\nReboot\nShutdown\n' | rofi -dmenu -p 'power')
+case "$choice" in
+  Lock)     exec swaylock -i ~/.dotfiles/wallpapers/.config/wallpapers/chrome_gothic_cross.jpg;;
+  Logout)   exec swaymsg exit ;;        # ends session -> SDDM greeter
+  Reboot)   exec systemctl reboot ;;
+  Shutdown) exec systemctl poweroff ;;
+  *)        exit 0 ;;
+esac

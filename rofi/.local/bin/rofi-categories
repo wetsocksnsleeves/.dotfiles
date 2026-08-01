@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+choice=$(printf 'apps\nemoji\ncalc\npower\n' | rofi -dmenu -p 'menu')
+case "$choice" in
+  apps)  exec rofi -show drun ;;
+  emoji) exec rofi -modi emoji -show emoji -emoji-format '{emoji} {name}';;
+  calc)  exec rofi -modi calc -show calc ;;
+  power) exec $HOME/.local/bin/rofi-power-menu ;;
+  *)     exit 0 ;;
+esac

@@ -3,8 +3,6 @@
 ### Variables
 set $mod Mod4
 
-font pango:JetBrainsMonoNerdFont 12
-
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -14,16 +12,28 @@ set $right l
 # Apps
 set $term ghostty
 set $menu rofi -show drun
+set $start-menu $HOME/.local/bin/rofi-categories
+set $power-menu $HOME/.local/bin/rofi-power-menu
 set $browser helium
+set $wallpaper $HOME/.dotfiles/wallpapers/.config/wallpapers/chrome_gothic_cross.jpg
+set $cliphist-rofi-img $HOME/.local/bin/cliphist-rofi-img
 
 include /etc/sway/config-vars.d/*
 
 # Looks n Feel
-output * bg /home/ecto/.dotfiles/wallpapers/.config/wallpapers/chrome_gothic_cross.jpg fill
+font pango:JetBrainsMonoNerdFont 12
+output * bg $wallpaper fill
 default_floating_border pixel 1
 default_border pixel 1
 gaps outer 5
 gaps inner 5
+client.focused          #d6d6d6 #d6d6d6 #000000 #d6d6d6 #d6d6d6
+client.focused_inactive #999999 #999999 #000000 #999999 #999999
+client.unfocused        #666666 #666666 #000000 #666666 #666666
+client.urgent           #d6d6d6 #d6d6d6 #000000 #d6d6d6 #d6d6d6
+
+# Execute
+exec wl-paste --watch cliphist store
 
 ### Key bindings
 
@@ -36,6 +46,14 @@ gaps inner 5
 
     # Start your launcher
     bindsym $mod+space exec $menu
+    bindsym $mod+ctrl+space exec $start-menu
+    bindsym $mod+escape exec $power-menu
+
+    # Screenshot tools
+    bindsym alt+shift+4 exec grim -g "$(slurp)" - | wl-copy
+
+    # Clipboard
+    bindsym $mod+shift+v exec rofi -modi clipboard:$cliphist-rofi-img -show clipboard -show-icons
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -47,7 +65,7 @@ gaps inner 5
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
-    # Exit sway (logs you out of your Wayland session)
+    # Exit sway (fogs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 #
@@ -124,7 +142,6 @@ gaps inner 5
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 

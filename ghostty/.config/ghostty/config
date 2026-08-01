@@ -3,13 +3,13 @@ theme = bleakvoid
 
 # Colors
 background = 000000
-background-opacity = 0.5
+background-opacity = 0.8
 background-blur = 20
 
 # Font
 font-family = "ZedMonoNerdFontMono"
 font-style = Regular
-font-size = 16
+font-size = 12
 
 # Window
 window-theme = ghostty

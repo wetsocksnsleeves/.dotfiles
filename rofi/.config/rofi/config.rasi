@@ -1,0 +1,72 @@
+configuration {
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+* {
+    c-bg:        #000000;
+    c-surface:   #02010a;
+    c-entry:     #11151c;
+    c-selected:  #e8e8e8;
+    c-text:      #e8e8e8;
+    c-text-dim:  #c8ccd4;
+    c-hl:        bold #ffffff;
+    c-hl-sel:    bold #151b25;
+
+    background-color: @c-bg;
+    text-color: @c-text;
+    border: 0px;
+}
+
+window {
+    width: 40%;
+    border: 1px;
+    border-color: @c-bg;
+    background-color: @c-bg;
+    padding: 0px;
+}
+
+mainbox {
+    background-color: @c-surface;
+    border-radius: 9px;
+    padding: 12px;
+}
+
+inputbar { spacing: 8px; }
+prompt   { text-color: @c-text-dim; }
+entry    { text-color: @c-text; }
+listview { lines: 8; }
+
+element {
+    padding: 8px 12px;
+    background-color: @c-entry;
+    text-color: @c-text;
+    highlight: @c-hl;
+}
+
+element normal.normal,
+element normal.urgent,
+element normal.active,
+element alternate.normal,
+element alternate.urgent,
+element alternate.active {
+    background-color: @c-entry;
+    text-color: @c-text;
+}
+
+element selected,
+element selected.normal,
+element selected.urgent,
+element selected.active,
+element selected.alternate,
+element selected.alternate.normal,
+element selected.alternate.urgent,
+element selected.alternate.active {
+    background-color: @c-selected;
+    text-color: @c-entry;
+    highlight: @c-hl-sel;
+}
+
+scrollbar {
+    handle-color: @c-text;
+    background-color: @c-bg;
+}
