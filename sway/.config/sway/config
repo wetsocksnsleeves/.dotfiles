@@ -38,6 +38,12 @@ for_window [title="^pulsemixer$"] resize set 800px 600px
 # Execute
 exec_always pgrep -x wl-paste || wl-paste --watch cliphist store
 
+exec_always pgrep -x swayidle || swayidle -w \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    timeout 3600'swaylock -i $wallpaper' \
+    before-sleep 'swaylock -i $wallpaper'
+
 ### Key bindings
 
     # Start a terminal

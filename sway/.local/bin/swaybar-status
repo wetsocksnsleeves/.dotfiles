@@ -34,7 +34,7 @@ while true; do
 
     vol_block="{\"name\":\"volume\",\"markup\":\"pango\",\"full_text\":\"<span size='15pt'>${icon}</span>\",\"color\":\"$color\",\"separator\":false}"
 
-    time_text=$(date +'%Y/%m/%d %X')
+    time_text=$(date +'%b %d %a %X')
     ws_count=$(swaymsg -t get_workspaces 2>/dev/null | jq --arg o "$output" '[.[] | select(.output==$o)] | length' 2>/dev/null)
     if [ -z "$ws_count" ] || [ "$ws_count" -eq 0 ] 2>/dev/null; then
         ws_count=5
