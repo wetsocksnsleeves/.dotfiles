@@ -32,8 +32,11 @@ client.focused_inactive #999999 #999999 #000000 #999999 #999999
 client.unfocused        #666666 #666666 #000000 #666666 #666666
 client.urgent           #d6d6d6 #d6d6d6 #000000 #d6d6d6 #d6d6d6
 
+for_window [title="^pulsemixer$"] floating enable
+for_window [title="^pulsemixer$"] resize set 800px 600px
+
 # Execute
-exec wl-paste --watch cliphist store
+exec_always pgrep -x wl-paste || wl-paste --watch cliphist store
 
 ### Key bindings
 
@@ -195,15 +198,41 @@ bindsym $mod+r mode "resize"
 
 bar {
     position top
+    output DP-1
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    status_command $HOME/.local/bin/swaybar-status 2560 DP-1
+    height 34
+    separator_symbol "  "
+    gaps 10
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        statusline #e8e8e8
+        background #0a0908
+        inactive_workspace #00000000 #00000000 #c8ccd4
+        active_workspace #e8e8e8 #e8e8e8 #11151c
+        focused_workspace #e8e8e8 #e8e8e8 #11151c
+        urgent_workspace #e8e8e8 #e8e8e8 #11151c
+        separator #000000
+    }
+}
+
+bar {
+    position top
+    output DP-2
+
+    status_command $HOME/.local/bin/swaybar-status 1920 DP-2
+    height 26
+    separator_symbol "  "
+    gaps 10
+
+    colors {
+        statusline #e8e8e8
+        background #0a0908
+        inactive_workspace #00000000 #00000000 #c8ccd4
+        active_workspace #e8e8e8 #e8e8e8 #11151c
+        focused_workspace #e8e8e8 #e8e8e8 #11151c
+        urgent_workspace #e8e8e8 #e8e8e8 #11151c
+        separator #000000
     }
 }
 

@@ -1,0 +1,54 @@
+#!/bin/sh
+
+width=${1:-2560}
+output=${2:-DP-1}
+
+c_text="#e8e8e8"
+c_dim="#c8ccd4"
+
+echo '{"version":1,"click_events":true}'
+echo '['
+
+exec 3<&0
+(while read -r event <&3; do
+    name=$(printf '%s' "$event" | sed 's/^,//' | jq -r 'if type=="array" then .[0] else . end | .name // empty' 2>/dev/null)
+    if [ "$name" = "volume" ]; then
+        swaymsg exec -- ghostty --title=pulsemixer --background-opacity=0.99 -e pulsemixer >/dev/null 2>&1
+    fi
+done) &
+
+while true; do
+    volume=$(pactl get-sink-volume @DEFAULT_SINK@ 2>/dev/null | grep -o '[0-9]*%' | head -n1)
+    muted=$(pactl get-sink-mute @DEFAULT_SINK@ 2>/dev/null | grep -q 'yes' && echo muted || echo unmuted)
+
+    if [ "$muted" = "muted" ]; then
+        icon="  "
+        color="$c_dim"
+    elif [ "${volume%\%}" -le 50 ]; then
+        icon="  "
+        color="$c_text"
+    else
+        icon="  "
+        color="$c_text"
+    fi
+
+    vol_block="{\"name\":\"volume\",\"markup\":\"pango\",\"full_text\":\"<span size='15pt'>${icon}</span>\",\"color\":\"$color\",\"separator\":false}"
+
+    time_text=$(date +'%Y/%m/%d %X')
+    ws_count=$(swaymsg -t get_workspaces 2>/dev/null | jq --arg o "$output" '[.[] | select(.output==$o)] | length' 2>/dev/null)
+    if [ -z "$ws_count" ] || [ "$ws_count" -eq 0 ] 2>/dev/null; then
+        ws_count=5
+    fi
+    left=$((ws_count * 22))
+    right=45
+    min_width=$((width - 2 * left))
+    [ "$min_width" -lt 0 ] && min_width=0
+    spacer=$((left - right))
+    [ "$spacer" -lt 0 ] && spacer=0
+
+    time_block="{\"full_text\":\"$time_text\",\"color\":\"$c_text\",\"align\":\"center\",\"min_width\":$min_width,\"separator\":false}"
+    spacer_block="{\"full_text\":\"\",\"min_width\":$spacer,\"separator\":false}"
+
+    echo "[$time_block,$vol_block,$spacer_block],"
+    sleep 1
+done
