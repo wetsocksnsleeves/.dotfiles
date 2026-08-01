@@ -4,13 +4,14 @@ configuration {
 
 * {
     c-bg:        #000000;
-    c-surface:   #02010a;
-    c-entry:     #11151c;
+    c-surface:   #0a0908;
+    c-entry:     #1b1b1e;
     c-selected:  #e8e8e8;
     c-text:      #e8e8e8;
     c-text-dim:  #c8ccd4;
     c-hl:        bold #ffffff;
     c-hl-sel:    bold #151b25;
+    separatorcolor: @c-surface;
 
     background-color: @c-bg;
     text-color: @c-text;
@@ -36,11 +37,14 @@ prompt   { text-color: @c-text-dim; }
 entry    { text-color: @c-text; }
 listview { lines: 8; }
 
+textbox { text-color: @c-text; }
+
 element {
     padding: 8px 12px;
     background-color: @c-entry;
     text-color: @c-text;
     highlight: @c-hl;
+    separatorcolor: @c-surface;
 }
 
 element normal.normal,
