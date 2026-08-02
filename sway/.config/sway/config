@@ -206,7 +206,7 @@ bindsym $mod+r mode "resize"
 #
 
 # Status Bar
-exec_always waybar -c ~/.config/waybar/config -s ~/.config/waybar/style.css
-exec_always waybar -c ~/.config/waybar/config-dp2 -s ~/.config/waybar/style-dp2.css
+exec_always pgrep -f "[w]aybar -c /home/ecto/.config/waybar/config -s" || waybar -c ~/.config/waybar/config -s ~/.config/waybar/style.css
+exec_always pgrep -f "[w]aybar -c /home/ecto/.config/waybar/config-dp2 -s" || waybar -c ~/.config/waybar/config-dp2 -s ~/.config/waybar/style-dp2.css
 
 include /etc/sway/config.d/*

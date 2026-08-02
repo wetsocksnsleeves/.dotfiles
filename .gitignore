@@ -1,1 +1,2 @@
 *.log
+**/herdr/session.json
