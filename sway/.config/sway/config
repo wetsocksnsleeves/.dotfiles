@@ -41,7 +41,7 @@ exec_always pgrep -x wl-paste || wl-paste --watch cliphist store
 exec_always pgrep -x swayidle || swayidle -w \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    timeout 3600'swaylock -i $wallpaper' \
+    timeout 3600 'swaylock -i $wallpaper' \
     before-sleep 'swaylock -i $wallpaper'
 
 ### Key bindings
@@ -49,6 +49,7 @@ exec_always pgrep -x swayidle || swayidle -w \
     # Start a terminal
     bindsym $mod+Return exec $term
     bindsym $mod+Shift+b exec $browser
+    bindsym $mod+Shift+f exec nemo
 
     # Kill focused window
     bindsym $mod+q kill
@@ -60,6 +61,9 @@ exec_always pgrep -x swayidle || swayidle -w \
 
     # Screenshot tools
     bindsym alt+shift+4 exec grim -g "$(slurp)" - | wl-copy
+
+    # Regional screen recording with desktop + mic audio
+    bindsym alt+shift+5 exec $HOME/.local/bin/capture-screenrecording --with-desktop-audio --with-microphone-audio
 
     # Clipboard
     bindsym $mod+shift+v exec rofi -modi clipboard:$cliphist-rofi-img -show clipboard -show-icons
@@ -151,7 +155,6 @@ exec_always pgrep -x swayidle || swayidle -w \
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -202,44 +205,8 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 
-bar {
-    position top
-    output DP-1
-
-    status_command $HOME/.local/bin/swaybar-status 2560 DP-1
-    height 34
-    separator_symbol "  "
-    gaps 10
-
-    colors {
-        statusline #e8e8e8
-        background #0a0908
-        inactive_workspace #00000000 #00000000 #c8ccd4
-        active_workspace #e8e8e8 #e8e8e8 #11151c
-        focused_workspace #e8e8e8 #e8e8e8 #11151c
-        urgent_workspace #e8e8e8 #e8e8e8 #11151c
-        separator #000000
-    }
-}
-
-bar {
-    position top
-    output DP-2
-
-    status_command $HOME/.local/bin/swaybar-status 1920 DP-2
-    height 26
-    separator_symbol "  "
-    gaps 10
-
-    colors {
-        statusline #e8e8e8
-        background #0a0908
-        inactive_workspace #00000000 #00000000 #c8ccd4
-        active_workspace #e8e8e8 #e8e8e8 #11151c
-        focused_workspace #e8e8e8 #e8e8e8 #11151c
-        urgent_workspace #e8e8e8 #e8e8e8 #11151c
-        separator #000000
-    }
-}
+# Status Bar
+exec_always waybar -c ~/.config/waybar/config -s ~/.config/waybar/style.css
+exec_always waybar -c ~/.config/waybar/config-dp2 -s ~/.config/waybar/style-dp2.css
 
 include /etc/sway/config.d/*

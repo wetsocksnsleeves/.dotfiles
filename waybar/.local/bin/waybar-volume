@@ -1,0 +1,20 @@
+#!/bin/sh
+# Output the volume icon based on exact thresholds:
+#   >= 40  ->  
+#   >= 20  ->  
+#   <  20  ->  
+
+vol=$(pactl get-sink-volume @DEFAULT_SINK@ 2>/dev/null | grep -o '[0-9]*%' | head -n1 | tr -d '%')
+muted=$(pactl get-sink-mute @DEFAULT_SINK@ 2>/dev/null | grep -q 'yes' && echo muted || echo unmuted)
+
+if [ "$muted" = "muted" ]; then
+    icon="  "
+elif [ "${vol:-0}" -ge 40 ]; then
+    icon="  "
+elif [ "${vol:-0}" -ge 20 ]; then
+    icon="  "
+else
+    icon="  "
+fi
+
+printf '%s' "$icon"

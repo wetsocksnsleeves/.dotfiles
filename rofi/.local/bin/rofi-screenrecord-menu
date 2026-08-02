@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+REC="$HOME/.local/bin/capture-screenrecording"
+
+if pgrep -f "^gpu-screen-recorder" >/dev/null; then
+  choice=$(printf 'Stop recording\n' | rofi -dmenu -p 'screenrecord' -mesg 'Recording in progress')
+  case "$choice" in
+    Stop*) exec "$REC" --stop-recording ;;
+    *) exit 0 ;;
+  esac
+fi
+
+choice=$(printf 'Region\nRegion + desktop audio\nRegion + mic\nRegion + desktop + mic\nWebcam overlay\nStop recording\n' | rofi -dmenu -p 'screenrecord')
+case "$choice" in
+  'Region')                    exec "$REC" ;;
+  'Region + desktop audio')    exec "$REC" --with-desktop-audio ;;
+  'Region + mic')              exec "$REC" --with-microphone-audio ;;
+  'Region + desktop + mic')    exec "$REC" --with-desktop-audio --with-microphone-audio ;;
+  'Webcam overlay')            exec "$REC" --with-webcam --with-desktop-audio ;;
+  'Stop recording')            exec "$REC" --stop-recording ;;
+  *)                           exit 0 ;;
+esac

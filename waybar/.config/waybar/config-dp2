@@ -1,0 +1,54 @@
+{
+    "output": "DP-2",
+    "layer": "top",
+    "position": "top",
+    "height": 26,
+    "spacing": 8,
+    "margin-top": 4,
+    "margin-bottom": 4,
+    "margin-left": 4,
+    "margin-right": 4,
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/record", "custom/volume"],
+
+    "sway/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "0"
+        },
+        "on-click": "activate"
+    },
+
+    "clock": {
+        "format": "{:%b %d %a %X}",
+        "interval": 1
+    },
+
+    "custom/volume": {
+        "exec": "$HOME/.local/bin/waybar-volume",
+        "interval": 1,
+        "on-click": "swaymsg exec -- ghostty --title=pulsemixer --background-opacity=0.99 -e pulsemixer",
+        "tooltip": false
+    },
+
+    "custom/record": {
+        "exec": "$HOME/.local/bin/waybar-record",
+        "exec-if": "pgrep -f '^gpu-screen-recorder'",
+        "interval": 1,
+        "signal": 8,
+        "on-click": "$HOME/.local/bin/capture-screenrecording --stop-recording",
+        "tooltip": false,
+        "markup": "pango",
+        "format": "{}"
+    }
+}

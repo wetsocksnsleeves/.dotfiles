@@ -14,6 +14,8 @@ exec 3<&0
     name=$(printf '%s' "$event" | sed 's/^,//' | jq -r 'if type=="array" then .[0] else . end | .name // empty' 2>/dev/null)
     if [ "$name" = "volume" ]; then
         swaymsg exec -- ghostty --title=pulsemixer --background-opacity=0.99 -e pulsemixer >/dev/null 2>&1
+    elif [ "$name" = "screenrecord" ]; then
+        $HOME/.local/bin/capture-screenrecording --stop-recording >/dev/null 2>&1 &
     fi
 done) &
 
@@ -34,6 +36,19 @@ while true; do
 
     vol_block="{\"name\":\"volume\",\"markup\":\"pango\",\"full_text\":\"<span size='15pt'>${icon}</span>\",\"color\":\"$color\",\"separator\":false}"
 
+    rec_block=""
+    if pgrep -f "^gpu-screen-recorder" >/dev/null 2>&1; then
+        rec_start=$(stat -c %Y /tmp/omarchy-screenrecord-filename 2>/dev/null)
+        if [ -n "$rec_start" ]; then
+            now=$(date +%s)
+            elapsed=$((now - rec_start))
+            mins=$((elapsed / 60))
+            secs=$((elapsed % 60))
+            dur=$(printf '%02d:%02d' "$mins" "$secs")
+            rec_block="{\"name\":\"screenrecord\",\"markup\":\"pango\",\"full_text\":\"<span color='#ff3b30'>●</span> $dur\",\"color\":\"$c_text\",\"separator\":false}"
+        fi
+    fi
+
     time_text=$(date +'%b %d %a %X')
     ws_count=$(swaymsg -t get_workspaces 2>/dev/null | jq --arg o "$output" '[.[] | select(.output==$o)] | length' 2>/dev/null)
     if [ -z "$ws_count" ] || [ "$ws_count" -eq 0 ] 2>/dev/null; then
@@ -49,6 +64,10 @@ while true; do
     time_block="{\"full_text\":\"$time_text\",\"color\":\"$c_text\",\"align\":\"center\",\"min_width\":$min_width,\"separator\":false}"
     spacer_block="{\"full_text\":\"\",\"min_width\":$spacer,\"separator\":false}"
 
-    echo "[$time_block,$vol_block,$spacer_block],"
+    blocks="[$time_block,$vol_block,$spacer_block]"
+    if [ -n "$rec_block" ]; then
+        blocks="[$time_block,$rec_block,$vol_block,$spacer_block]"
+    fi
+    echo "$blocks,"
     sleep 1
 done
