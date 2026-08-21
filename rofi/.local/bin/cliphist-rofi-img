@@ -4,7 +4,7 @@ tmp_dir="/tmp/cliphist"
 rm -rf "$tmp_dir"
 
 if [[ -n "$1" ]]; then
-    cliphist decode <<<"$1" | wl-copy
+    cliphist decode <<<"$1" | wl-copy && wtype -M ctrl -k v
     exit
 fi
 

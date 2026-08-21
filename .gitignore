@@ -1,2 +1,13 @@
 *.log
 **/herdr/session.json
+
+# claude: track only intentional config — never runtime state, caches or credentials
+claude/.claude/*
+!claude/.claude/settings.json
+!claude/.claude/scripts/
+!claude/.claude/skills/
+!claude/.claude/CLAUDE.md
+
+# credentials, anywhere
+.credentials.json
+**/remote-settings.json
