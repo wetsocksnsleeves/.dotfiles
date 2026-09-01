@@ -6,7 +6,14 @@ claude/.claude/*
 !claude/.claude/settings.json
 !claude/.claude/scripts/
 !claude/.claude/skills/
+!claude/.claude/hooks/
+!claude/.claude/commands/
+!claude/.claude/output-styles/
 !claude/.claude/CLAUDE.md
+!claude/.claude/knowledge.md
+
+# machine-local symlink into the separate obsidian vault repo (~/.claude/local)
+claude/.claude/skills/manage-obsidian-vault
 
 # credentials, anywhere
 .credentials.json
