@@ -4,5 +4,6 @@ exclude:
   - "node_modules/**"
   - ".gitignore"
   - "package.json"
+  - "bun.lock"
   - "plugins/**"
 strict: false
