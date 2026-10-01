@@ -10,15 +10,24 @@ Configurations I use to LARP as cracked so I eventually am cracked.
 
 # Installation
 
-First, clone this repo to your home directory:
+Clone this repo to your home directory:
 
 ```
-git clone git@github.com:realecto/.dotfiles.git
+git clone git@github.com:realecto/.dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 ```
-Then, using GNU stow you can stow the particular modules you want:
+
+Each top-level directory is a [fibre](https://github.com/wetsocksnsleeves/fibre)
+set, and its `fibre.yaml` says where it links to. Link the sets you want, then
+start the watcher:
+
 ```
-stow tmux nvim zsh
+fibre link tmux
+fibre link nvim
+fibre link zsh
+fibre watch install
 ```
+
 Done!
 
 # Overview

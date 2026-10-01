@@ -1,0 +1,4 @@
+dest: $HOME/.config/lazygit
+exclude:
+  - "**/.DS_Store"
+strict: false

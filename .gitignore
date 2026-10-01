@@ -1,19 +1,18 @@
 *.log
-**/herdr/session.json
+herdr/session.json
 
 # claude: track only intentional config — never runtime state, caches or credentials
-claude/.claude/*
-!claude/.claude/settings.json
-!claude/.claude/scripts/
-!claude/.claude/skills/
-!claude/.claude/hooks/
-!claude/.claude/commands/
-!claude/.claude/output-styles/
-!claude/.claude/CLAUDE.md
-!claude/.claude/knowledge.md
+claude/*
+!claude/fibre.yaml
+!claude/settings.json
+!claude/scripts/
+!claude/skills/
+!claude/hooks/
+!claude/commands/
+!claude/output-styles/
+!claude/CLAUDE.md
+!claude/knowledge.md
 
-# machine-local symlink into the separate obsidian vault repo (~/.claude/local)
-claude/.claude/skills/manage-obsidian-vault
 
 # credentials, anywhere
 .credentials.json

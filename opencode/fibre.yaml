@@ -1,0 +1,8 @@
+dest: $HOME/.config/opencode
+exclude:
+  - "**/.DS_Store"
+  - "node_modules/**"
+  - ".gitignore"
+  - "package.json"
+  - "plugins/**"
+strict: false
