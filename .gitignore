@@ -3,7 +3,7 @@ herdr/session.json
 
 # claude: track only intentional config — never runtime state, caches or credentials
 claude/*
-!claude/fibre.yaml
+!claude/rivet.yaml
 !claude/settings.json
 !claude/scripts/
 !claude/skills/

@@ -10,10 +10,10 @@ Configurations I use to LARP as cracked so I eventually am cracked.
 
 # Installation
 
-Install [fibre](https://github.com/wetsocksnsleeves/fibre):
+Install [rivet](https://github.com/wetsocksnsleeves/rivet):
 
 ```
-curl -fsSL https://raw.githubusercontent.com/wetsocksnsleeves/fibre/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/wetsocksnsleeves/rivet/main/install.sh | sh
 ```
 
 Clone this repo to your home directory:
@@ -23,17 +23,17 @@ git clone git@github.com:wetsocksnsleeves/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
-Each top-level directory is a fibre set, and its `fibre.yaml` says where it
+Each top-level directory is a rivet set, and its `rivet.yaml` says where it
 links to. Link the sets you want, then start the watcher:
 
 ```
-fibre link tmux
-fibre link nvim
-fibre link zsh
-fibre watch install
+rivet link tmux
+rivet link nvim
+rivet link zsh
+rivet watch install
 ```
 
-Done! `fibre status` shows what each set links and anything that needs
+Done! `rivet status` shows what each set links and anything that needs
 attention.
 
 | Machine | Sets |
@@ -42,8 +42,8 @@ attention.
 | Linux | alacritty, davinci, hypr, i3, mako, omarchy, polybar, rofi, rofi-bin, sway, sway-bin, swaylock, waybar, waybar-bin, zsh-linux |
 | Either | clang, opencode, ruby, tools, wezterm |
 
-To track a new app's config, run `fibre init <name> --dest '$HOME/.config/<name>'`.
-fibre moves the existing files into the set and links them back.
+To track a new app's config, run `rivet init <name> --dest '$HOME/.config/<name>'`.
+rivet moves the existing files into the set and links them back.
 
 # Overview
 
