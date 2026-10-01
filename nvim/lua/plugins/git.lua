@@ -27,6 +27,19 @@ return {
             gitsigns.setup()
             vim.keymap.set('n', '<leader>tb', gitsigns.blame, { desc = "Get current line blame" })
             vim.keymap.set('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = "Get current word diff" })
+
+            vim.keymap.set('n', '<leader>hq', function()
+                gitsigns.setqflist()
+            end, { desc = "Quickfix hunks in this file" })
+            vim.keymap.set('n', '<leader>hQ', function()
+                gitsigns.setqflist("all")
+            end, { desc = "Quickfix hunks in all changed files" })
+            vim.keymap.set('n', '<leader>hc', require("quickfix").changed_files,
+                { desc = "Quickfix files changed vs branch base" })
+            vim.keymap.set('n', '<leader>hb', function()
+                gitsigns.change_base(nil, true)
+                vim.notify("Diff base reset to index")
+            end, { desc = "Reset diff base to index" })
         end
     },
     {

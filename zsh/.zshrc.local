@@ -74,3 +74,6 @@ alias gdp="git diff master...HEAD | diffnav"
 alias sz="source ~/.zshrc"
 alias aenv="source .venv/bin/activate"
 alias mknextpj="npx create-next-app@latest"
+
+export TUNNEL_EXPERIMENTAL_SYNCER=1
+export DISABLE_DEV_NOTIFICATIONS=true
