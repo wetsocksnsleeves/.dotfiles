@@ -1,0 +1,4 @@
+dest: $HOME/.local/share/DaVinciResolve
+exclude:
+  - "**/.DS_Store"
+strict: true

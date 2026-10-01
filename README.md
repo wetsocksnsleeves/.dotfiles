@@ -10,16 +10,40 @@ Configurations I use to LARP as cracked so I eventually am cracked.
 
 # Installation
 
-First, clone this repo to your home directory:
+Install [fibre](https://github.com/wetsocksnsleeves/fibre):
 
 ```
-git clone git@github.com:realecto/.dotfiles.git
+curl -fsSL https://raw.githubusercontent.com/wetsocksnsleeves/fibre/main/install.sh | sh
 ```
-Then, using GNU stow you can stow the particular modules you want:
+
+Clone this repo to your home directory:
+
 ```
-stow tmux nvim zsh
+git clone git@github.com:wetsocksnsleeves/.dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 ```
-Done!
+
+Each top-level directory is a fibre set, and its `fibre.yaml` says where it
+links to. Link the sets you want, then start the watcher:
+
+```
+fibre link tmux
+fibre link nvim
+fibre link zsh
+fibre watch install
+```
+
+Done! `fibre status` shows what each set links and anything that needs
+attention.
+
+| Machine | Sets |
+|---|---|
+| macOS | aerospace, claude, gh-dash, ghostty, herdr, lazygit, nvim, sesh, tmux, wallpapers, zsh |
+| Linux | alacritty, davinci, hypr, i3, mako, omarchy, polybar, rofi, rofi-bin, sway, sway-bin, swaylock, waybar, waybar-bin, zsh-linux |
+| Either | clang, opencode, ruby, tools, wezterm |
+
+To track a new app's config, run `fibre init <name> --dest '$HOME/.config/<name>'`.
+fibre moves the existing files into the set and links them back.
 
 # Overview
 

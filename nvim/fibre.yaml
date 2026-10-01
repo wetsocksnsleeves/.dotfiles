@@ -1,0 +1,5 @@
+dest: $HOME/.config/nvim
+exclude:
+  - "**/.DS_Store"
+  - "**/.git/**"
+strict: false

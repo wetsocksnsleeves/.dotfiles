@@ -1,0 +1,26 @@
+onboarding = false
+# herdr configuration
+[theme]
+name = "vesper"
+auto_switch = false
+
+[keys]
+prefix = "ctrl+s"
+
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+previous_workspace = "prefix+("
+next_workspace = "prefix+)"
+
+split_vertical = "prefix+%"
+split_horizontal = 'prefix+"'
+new_tab = "prefix+c"
+
+[ui.toast]
+delivery = "system"
+
+[ui]
+pane_gaps = false
+agent_panel_sort = "spaces"

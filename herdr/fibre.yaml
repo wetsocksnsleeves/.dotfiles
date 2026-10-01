@@ -1,0 +1,9 @@
+dest: $HOME/.config/herdr
+exclude:
+  - "**/.DS_Store"
+  - "session.json"
+  - "*.log"
+  - "*.sock"
+  - ".plugins.lock"
+  - "release-notes.json"
+strict: false
