@@ -35,4 +35,5 @@ exclude:
   - "skills/synced/**"
   - "skills/manage-obsidian-vault"
   - "skills/manage-obsidian-vault/**"
+  - skills/cool-word-generator
 strict: false
