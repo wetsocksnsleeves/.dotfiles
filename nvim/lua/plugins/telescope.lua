@@ -49,7 +49,8 @@ return {
 
       vim.keymap.set('n', '<leader>en', function()
         builtin.find_files {
-          cwd = vim.fn.stdpath("config")
+          cwd = vim.fn.stdpath("config"),
+          follow = true,
         }
       end, { desc = "Neovim Configuration Files" })
       vim.keymap.set('n', '<leader>fh', function()
