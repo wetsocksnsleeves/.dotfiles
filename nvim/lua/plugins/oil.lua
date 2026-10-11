@@ -1,6 +1,6 @@
 return {
     {
-        'stevearc/oil.nvim',
+        'wetsocksnsleeves/coconut-oil.nvim',
         ---@module 'oil'
         ---@type oil.SetupOpts
         opts = {},
@@ -11,6 +11,10 @@ return {
         config = function()
             local oil = require("oil")
             oil.setup({
+                delete_to_trash = true,
+                skip_confirm_for_simple_edits = true,
+                -- Only prompt when the pending changes include a delete
+                skip_confirm_for_delete = false,
                 float = {
                     border = "rounded",
                     win_options = {
