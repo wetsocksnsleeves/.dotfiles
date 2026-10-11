@@ -14,7 +14,7 @@ return {
                 delete_to_trash = true,
                 skip_confirm_for_simple_edits = true,
                 -- Only prompt when the pending changes include a delete
-                skip_confirm_for_delete = false,
+                skip_confirm_for_delete = true,
                 float = {
                     border = "rounded",
                     win_options = {
