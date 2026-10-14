@@ -15,5 +15,13 @@ return {
     }),
     vim.lsp.config("rubocop", {
         enabled = false,
+    }),
+    vim.lsp.config("gopls", {
+        cmd = { vim.fn.expand("~/.local/share/mise/shims/gopls") },
+        settings = {
+            gopls = {
+                gofumpt = true,
+            },
+        },
     })
 }

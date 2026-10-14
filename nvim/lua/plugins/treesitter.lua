@@ -17,6 +17,7 @@ return {
     ts.install({
       "lua", "javascript", "typescript", "tsx",
       "html", "embedded_template", "ruby", "css",
+      "go", "gomod", "gosum",
     })
 
     -- Enable highlighting + indent for any buffer whose filetype has an

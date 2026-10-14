@@ -20,6 +20,13 @@ return {
                 }),
                 null_ls.builtins.diagnostics.pylint.with({
                 }),
+                -- Go - gopls handles formatting (gofumpt), goimports fixes imports
+                null_ls.builtins.formatting.goimports.with({
+                    command = vim.fn.expand("~/.local/share/mise/shims/goimports"),
+                }),
+                null_ls.builtins.diagnostics.golangci_lint.with({
+                    command = vim.fn.expand("~/.local/share/mise/shims/golangci-lint"),
+                }),
             },
             autostart = true,
         })
