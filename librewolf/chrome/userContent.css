@@ -1,0 +1,21 @@
+/* Styles applied to web pages and internal pages (about:*). */
+
+/* Match the userChrome.css corner radius on internal pages (settings, addons, etc).
+ * Tokens are inherited into shadow DOM (moz-card, moz-box-item, moz-button),
+ * which the universal selector cannot reach. */
+@-moz-document url-prefix("about:") {
+  :root {
+    --uc-radius: 4px;
+    --border-radius-xsmall: var(--uc-radius) !important;
+    --border-radius-small: var(--uc-radius) !important;
+    --border-radius-medium: var(--uc-radius) !important;
+    --border-radius-large: var(--uc-radius) !important;
+    --border-radius-xlarge: var(--uc-radius) !important;
+    --border-radius-circle: var(--uc-radius) !important;
+    --button-border-radius: var(--uc-radius) !important;
+  }
+
+  * {
+    border-radius: var(--uc-radius) !important;
+  }
+}

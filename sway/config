@@ -14,7 +14,7 @@ set $term ghostty
 set $menu rofi -show drun
 set $start-menu $HOME/.local/bin/rofi-categories
 set $power-menu $HOME/.local/bin/rofi-power-menu
-set $browser helium
+set $browser librewolf
 set $wallpaper $HOME/.dotfiles/wallpapers/chrome_gothic_cross.jpg
 set $cliphist-rofi-img $HOME/.local/bin/cliphist-rofi-img
 

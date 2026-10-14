@@ -1,0 +1,86 @@
+/* LibreWolf browser UI styles. Restart LibreWolf to apply changes.
+ * Inspect the UI with the Browser Toolbox: Ctrl+Alt+Shift+I. */
+
+/* Hide the horizontal tab bar (tabs live in the vertical sidebar) */
+#TabsToolbar { visibility: collapse !important; }
+
+/* Compact navbar */
+#nav-bar { min-height: 32px !important; }
+
+/* Hide the sidebar header */
+#sidebar-header { display: none !important; }
+
+/* Hide the header of extension sidebar panels (e.g. Sidebery).
+ * With sidebar.revamp the header lives in webext-panels.xhtml, not browser.xhtml. */
+#sidebar-panel-header { display: none !important; }
+
+/* Remove the gap on the left of the sidebar panel.
+ * Firefox sets padding-inline-start inline from script; !important beats it. */
+#sidebar-box { padding-inline-start: 0 !important; }
+
+/* 1px focus border on the URL bar / search bar (default 2px).
+ * Scoped here so focus rings elsewhere keep their width. */
+#urlbar,
+#searchbar {
+  --focus-outline-width: 1px !important;
+  --urlbar-input-container-border-width-open: 1px !important;
+}
+
+/* Small uniform corner radius everywhere, square structural bars,
+ * and the content panel keeps its own radius.
+ * The tokens are inherited into shadow DOM (sidebar launcher, urlbar parts),
+ * which the universal selector below cannot reach. */
+:root {
+  --uc-radius: 4px;
+  --border-radius-xsmall: var(--uc-radius) !important;
+  --border-radius-small: var(--uc-radius) !important;
+  --border-radius-medium: var(--uc-radius) !important;
+  --border-radius-large: var(--uc-radius) !important;
+  --border-radius-xlarge: var(--uc-radius) !important;
+  --border-radius-circle: var(--uc-radius) !important;
+  --button-border-radius: var(--uc-radius) !important;
+  --toolbarbutton-border-radius: var(--uc-radius) !important;
+  --tab-border-radius: var(--uc-radius) !important;
+  --urlbar-border-radius: var(--uc-radius) !important;
+  --urlbarview-border-radius: var(--uc-radius) !important;
+  --popup-border-radius: var(--uc-radius) !important;
+  --arrowpanel-border-radius: var(--uc-radius) !important;
+}
+
+*:not(.browserContainer, .dialogOverlay[topmost="true"]) {
+  border-radius: var(--uc-radius) !important;
+}
+
+/* Full-width bars and the containers around the content stay square */
+#navigator-toolbox,
+#navigator-toolbox toolbar,
+#sidebar-main,
+#sidebar-box,
+#browser,
+#tabbrowser-tabbox,
+#tabbrowser-tabpanels {
+  border-radius: 0 !important;
+}
+
+/* The content panel used var(--border-radius-medium), overridden above,
+ * so restore its default value explicitly. */
+.browserContainer {
+  border-radius: 8px !important;
+}
+
+/* Sidebery toolbar button: filled 4-point star (lucide "astroid").
+ * The ID is Sidebery's permanent add-on ID, stable across reinstalls.
+ * Set list-style-image directly: a relative url() inside the --webextension-*
+ * variables can resolve against Firefox's stylesheet instead of this file. */
+#_3c078156-979c-498b-8990-85f7987dd929_-browser-action,
+#_3c078156-979c-498b-8990-85f7987dd929_-browser-action .toolbarbutton-icon {
+  list-style-image: url("sidebery.svg") !important;
+}
+
+/* context-fill/context-stroke in the SVG take these colors.
+ * --toolbarbutton-icon-fill is what Firefox's own toolbar icons use. */
+#_3c078156-979c-498b-8990-85f7987dd929_-browser-action .toolbarbutton-icon {
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: var(--toolbarbutton-icon-fill) !important;
+  stroke: var(--toolbarbutton-icon-fill) !important;
+}
