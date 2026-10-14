@@ -7,6 +7,10 @@ ZSH_THEME="minimal"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
+# Editor
+export EDITOR=nvim
+export VISUAL=nvim
+
 # Vim keymaps
 bindkey -v
 bindkey -v 'fd' vi-cmd-mode
