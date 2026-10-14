@@ -39,8 +39,16 @@ attention.
 | Machine | Sets |
 |---|---|
 | macOS | aerospace, claude, gh-dash, ghostty, herdr, lazygit, nvim, sesh, tmux, wallpapers, zsh |
-| Linux | alacritty, davinci, hypr, i3, mako, omarchy, polybar, rofi, rofi-bin, sway, sway-bin, swaylock, waybar, waybar-bin, zsh-linux |
+| Linux | alacritty, davinci, hypr, i3, librewolf, mako, omarchy, polybar, rofi, rofi-bin, sway, sway-bin, swaylock, waybar, waybar-bin, zsh-linux |
 | Either | clang, opencode, ruby, tools, wezterm |
+
+The `librewolf` set links into `~/.config/librewolf/librewolf`. LibreWolf only
+reads `chrome/` from inside the profile, whose folder name differs per machine,
+so after `rivet link librewolf` point the profile at it once:
+
+```
+cd ~/.config/librewolf/librewolf/*.default-release && ln -s ../chrome chrome
+```
 
 To track a new app's config, run `rivet init <name> --dest '$HOME/.config/<name>'`.
 rivet moves the existing files into the set and links them back.
