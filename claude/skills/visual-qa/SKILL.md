@@ -141,7 +141,7 @@ Manifest schema — image paths absolute, `before` may be `null`:
 }
 ```
 
-The builder embeds every image as a data URI, so the report is a single portable file. Images are click-to-zoom.
+The builder embeds every image as a data URI, so the report is a single portable file. Images are click-to-zoom. Each image has a Download button. Stills also get a Copy image button that puts a PNG on the clipboard for pasting into a PR. Browsers can't put an animated GIF on the clipboard, so GIFs get a Copy path button and a hint to attach the file through the PR's file picker.
 
 Keep it minimal — the report is evidence, not a writeup. `summary` is one sentence. `note` is one line per screen, describing what to look at. `notes` records the capture conditions so the reader can trust the pair.
 

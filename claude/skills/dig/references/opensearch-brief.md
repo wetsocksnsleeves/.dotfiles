@@ -4,10 +4,11 @@ You are one of several subagents investigating an alert. Your source is OpenSear
 
 ## Tool
 
-Read-only wrapper, run through Bash:
+Read-only wrapper, run through Bash. The plugin cache directory name changes on every plugin update, so resolve the newest copy instead of hardcoding it. Shell variables do not persist between Bash calls, so put the lookup at the start of every command:
 
 ```
-/Users/etao/.claude/plugins/cache/tanda-plugins/developer-tooling/30ffc4cfd322/skills/opensearch-sentry-logs/opensearch-wrapper.sh get <path> [--pretty] [--data @/abs/path.json]
+OS=$(/bin/ls -t /Users/etao/.claude/plugins/cache/tanda-plugins/developer-tooling/*/skills/opensearch-sentry-logs/opensearch-wrapper.sh | head -1)
+"$OS" get <path> [--pretty] [--data @/abs/path.json]
 ```
 
 Never pass `--pretty`. It doubles the tokens you read back. Pipe through `jq -c` only if you need to trim the response.

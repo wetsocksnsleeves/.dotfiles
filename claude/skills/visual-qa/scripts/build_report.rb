@@ -20,10 +20,24 @@ end
 
 def h(text) = CGI.escapeHTML(text.to_s)
 
+def actions(uri, path)
+  download = %(<a class="btn" href="#{uri}" download="#{h(File.basename(path))}">Download</a>)
+  return %(<span class="actions"><button data-copy="image">Copy image</button>#{download}</span>) unless File.extname(path).casecmp?(".gif")
+
+  %(<span class="actions"><button data-copy="path" data-path="#{h(path)}">Copy path</button>#{download}</span>)
+end
+
+def gif_hint(path)
+  return "" unless File.extname(path).casecmp?(".gif")
+
+  %(<p class="hint">Browsers can't put an animated GIF on the clipboard. Copy the path, click the PR's attach-files link, press ⌘⇧G, paste and press Enter.</p>)
+end
+
 def pane(label, path, empty_text)
   uri = data_uri(path)
-  body = uri ? %(<img src="#{uri}" alt="#{h(label)}">) : %(<p class="empty">#{h(empty_text)}</p>)
-  %(<figure><figcaption>#{h(label)}</figcaption>#{body}</figure>)
+  return %(<figure><figcaption><span>#{h(label)}</span></figcaption><p class="empty">#{h(empty_text)}</p></figure>) unless uri
+
+  %(<figure><figcaption><span>#{h(label)}</span>#{actions(uri, path)}</figcaption><img src="#{uri}" alt="#{h(label)}">#{gif_hint(path)}</figure>)
 end
 
 manifest_path = ARGV[0] or abort "usage: build_report.rb <manifest.json> [output.html]"
@@ -70,7 +84,12 @@ html = <<~HTML
     .pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
     @media (max-width:900px) { .pair { grid-template-columns:1fr; } }
     figure { margin:0; }
-    figcaption { font-size:.75rem; text-transform:uppercase; letter-spacing:.04em; color:var(--dim); margin-bottom:.4rem; }
+    figcaption { display:flex; align-items:center; justify-content:space-between; gap:.5rem; font-size:.75rem; text-transform:uppercase; letter-spacing:.04em; color:var(--dim); margin-bottom:.4rem; }
+    .actions { display:flex; gap:.35rem; }
+    button, .btn { font:inherit; text-transform:none; letter-spacing:0; padding:.15rem .55rem; border:1px solid var(--line); border-radius:4px;
+                   background:var(--card); color:var(--fg); cursor:pointer; text-decoration:none; }
+    button:hover, .btn:hover { border-color:var(--dim); }
+    .hint { color:var(--dim); font-size:.75rem; margin:.4rem 0 0; }
     img { width:100%; border:1px solid var(--line); border-radius:4px; display:block; cursor:zoom-in; background:var(--card); }
     img.zoom { position:fixed; inset:0; z-index:9; width:auto; max-width:100vw; max-height:100vh; margin:auto; cursor:zoom-out; border-radius:0; }
     .empty { border:1px dashed var(--line); border-radius:4px; padding:2rem 1rem; text-align:center; color:var(--dim); margin:0; }
@@ -87,8 +106,29 @@ html = <<~HTML
   #{shots}
   #{notes.empty? ? '' : "<footer><p><strong>Checked</strong></p>#{notes_html}</footer>"}
   <script>
+    const toPng = blob => blob.type === 'image/png' ? blob : createImageBitmap(blob).then(bitmap => {
+      const canvas = Object.assign(document.createElement('canvas'), { width: bitmap.width, height: bitmap.height });
+      canvas.getContext('2d').drawImage(bitmap, 0, 0);
+      return new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    });
+
+    const flash = (button, text) => {
+      button.dataset.label ??= button.textContent;
+      button.textContent = text;
+      setTimeout(() => { button.textContent = button.dataset.label; }, 1500);
+    };
+
+    const copy = button => button.dataset.copy === 'path'
+      ? navigator.clipboard.writeText(button.dataset.path)
+      : navigator.clipboard.write([new ClipboardItem({
+          'image/png': fetch(button.closest('figure').querySelector('img').src).then(r => r.blob()).then(toPng)
+        })]);
+
     document.addEventListener('click', e => {
-      if (e.target.tagName === 'IMG') e.target.classList.toggle('zoom');
+      if (e.target.tagName === 'IMG') return e.target.classList.toggle('zoom');
+      const button = e.target.closest('button[data-copy]');
+      if (!button) return;
+      copy(button).then(() => flash(button, 'Copied'), err => { console.error(err); flash(button, 'Copy failed'); });
     });
   </script>
   </body></html>

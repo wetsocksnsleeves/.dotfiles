@@ -66,27 +66,13 @@ Assistant: [proceeds directly with the requested action]
 
 # Procedures
 
-## PR body format, when asked to write one
+## Branch names
 
-Use this structure:
+Start every new branch name with a type and a slash. Use the same types as PR titles: `feat`, `fix`, `chore`, `refactor`, `perf`, `test`, `docs`, `build`, `ci` or `spike`. When there is a Linear ticket, put its id in lowercase right after the slash. Write the rest in lowercase words joined by hyphens.
 
-```markdown
-### PROBLEM
-
-[What is broken or wrong from the user's perspective]
-
-### CAUSE
-
-[Root cause in the code. What specifically is wrong and why]
-
-### SOLUTION
-
-[What was changed and how it fixes the cause]
-
-### QA
-
-_leave this for the user to fill in, provide points/checkboxes to guide them if there is a considerable amount to qa around_
-```
+- `feat/profile-image-upload`
+- `fix/eng-5716-square-split-by-category`
+- `spike/pos-sales-websockets`
 
 ## Knowledge base (`~/.claude/knowledge.md`), read before every task
 
