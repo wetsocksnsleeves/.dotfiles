@@ -66,28 +66,6 @@ Assistant: [proceeds directly with the requested action]
 
 # Procedures
 
-## PR body format, when asked to write one
-
-Use this structure:
-
-```markdown
-### PROBLEM
-
-[What is broken or wrong from the user's perspective]
-
-### CAUSE
-
-[Root cause in the code. What specifically is wrong and why]
-
-### SOLUTION
-
-[What was changed and how it fixes the cause]
-
-### QA
-
-_leave this for the user to fill in, provide points/checkboxes to guide them if there is a considerable amount to qa around_
-```
-
 ## Knowledge base (`~/.claude/knowledge.md`), read before every task
 
 **Before responding to any task**, read `~/.claude/knowledge.md` and apply any relevant knowledge to your response. This file contains accumulated learnings organized by category.
