@@ -66,6 +66,14 @@ Assistant: [proceeds directly with the requested action]
 
 # Procedures
 
+## Branch names
+
+Start every new branch name with a type and a slash. Use the same types as PR titles: `feat`, `fix`, `chore`, `refactor`, `perf`, `test`, `docs`, `build`, `ci` or `spike`. When there is a Linear ticket, put its id in lowercase right after the slash. Write the rest in lowercase words joined by hyphens.
+
+- `feat/profile-image-upload`
+- `fix/eng-5716-square-split-by-category`
+- `spike/pos-sales-websockets`
+
 ## Knowledge base (`~/.claude/knowledge.md`), read before every task
 
 **Before responding to any task**, read `~/.claude/knowledge.md` and apply any relevant knowledge to your response. This file contains accumulated learnings organized by category.

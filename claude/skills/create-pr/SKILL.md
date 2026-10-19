@@ -20,10 +20,11 @@ Open a pull request for the current branch with `gh pr create`, using the title 
 
 ## Title
 
-Start with a conventional commit type: `feat`, `fix`, `chore`, `refactor`, `perf`, `test`, `docs`, `build` or `ci`. When there is a Linear ticket, add it in lowercase after a slash. Then a colon and a short lowercase summary of what changes for the user.
+Start with a conventional commit type: `feat`, `fix`, `chore`, `refactor`, `perf`, `test`, `docs`, `build` or `ci`. Use `spike` for an exploratory PR that tries out an approach and isn't meant to merge as is. When there is a Linear ticket, add it in lowercase after a slash. Then a colon and a short lowercase summary of what changes for the user.
 
 - `feat: allow profile image upload on web view`
 - `fix/eng-5716: square split by category not creating streams`
+- `spike: stream pos sales over websockets`
 
 ## Body
 
