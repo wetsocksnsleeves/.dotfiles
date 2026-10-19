@@ -84,3 +84,26 @@
   fill: var(--toolbarbutton-icon-fill) !important;
   stroke: var(--toolbarbutton-icon-fill) !important;
 }
+
+/* Yellow accent from the ghostty bleakvoid theme (palette 1) instead of
+ * Firefox's blue/cyan (URL bar result links, tab-to-search, primary buttons, focus rings).
+ * Themes can't set these tokens, so they are overridden here.
+ * With a theme active, Firefox sets --link-color on :root[lwtheme] and the smartbar
+ * redefines it locally, so the URL bar elements and rows are targeted too. */
+:root,
+#urlbar,
+.smartbar,
+.urlbarView,
+.urlbarView-row,
+#searchbar {
+  --uc-accent: #fdd85d;
+  --color-accent-primary: var(--uc-accent) !important;
+  --color-accent-primary-hover: #fee38a !important;
+  --color-accent-primary-active: #e9c44a !important;
+  --color-accent-primary-selected: var(--uc-accent) !important;
+  --button-text-color-primary: #101010 !important;
+  --link-color: var(--uc-accent) !important;
+  --link-color-hover: #fee38a !important;
+  --link-color-active: #e9c44a !important;
+  --focus-outline-color: var(--uc-accent) !important;
+}

@@ -1,0 +1,63 @@
+{
+  "manifest_version": 2,
+  "version": "1.2",
+  "name": "deepslate",
+  "description": "Monochrome near-black theme.",
+  "browser_specific_settings": {
+    "gecko": { "id": "deepslate@ecto" }
+  },
+  "theme": {
+    "colors": {
+      "frame": "#101010",
+      "frame_inactive": "#101010",
+
+      "tab_selected": "#191919",
+      "tab_text": "#ececec",
+      "tab_background_text": "#bbbbbb",
+      "tab_background_separator": "#232323",
+      "tab_line": "#656565",
+      "tab_loading": "#656565",
+
+      "toolbar": "#101010",
+      "toolbar_text": "#ececec",
+      "toolbar_top_separator": "#101010",
+      "toolbar_bottom_separator": "#191919",
+      "toolbar_vertical_separator": "#232323",
+
+      "toolbar_field": "#191919",
+      "toolbar_field_text": "#ededed",
+      "toolbar_field_border": "#232323",
+      "toolbar_field_focus": "#191919",
+      "toolbar_field_text_focus": "#ededed",
+      "toolbar_field_border_focus": "#656565",
+      "toolbar_field_highlight": "#3d3d3d",
+      "toolbar_field_highlight_text": "#ffffff",
+
+      "button_background_hover": "rgba(255, 255, 255, 0.08)",
+      "button_background_active": "rgba(255, 255, 255, 0.14)",
+
+      "icons": "#ececec",
+      "icons_attention": "#ffffff",
+
+      "popup": "#101010",
+      "popup_text": "#ececec",
+      "popup_border": "#232323",
+      "popup_highlight": "#232323",
+      "popup_highlight_text": "#ffffff",
+
+      "sidebar": "#101010",
+      "sidebar_text": "#ececec",
+      "sidebar_border": "#191919",
+      "sidebar_highlight": "#232323",
+      "sidebar_highlight_text": "#ffffff",
+
+      "ntp_background": "#101010",
+      "ntp_text": "#ececec",
+      "ntp_card_background": "#191919"
+    },
+    "properties": {
+      "color_scheme": "dark",
+      "content_color_scheme": "dark"
+    }
+  }
+}
