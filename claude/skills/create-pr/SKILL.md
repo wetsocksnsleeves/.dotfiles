@@ -15,7 +15,7 @@ Open a pull request for the current branch with `gh pr create`, using the title 
 3. Work out what the branch does from `git log master..HEAD` and `git diff master...HEAD`. If the branch name or a commit names a Linear ticket (for example `ENG-1234`), read the ticket for the problem it describes.
 4. Push the branch with `git push -u origin HEAD`.
 5. Write the body into a file in the session scratchpad. Passing it with `--body-file` keeps backticks and markdown away from the shell.
-6. Run `gh pr create --title "<title>" --body-file <file>`. If the repo's AGENTS.md or CLAUDE.md sets more PR rules, such as draft status, assignee or labels, add those flags.
+6. Run `gh pr create --title "<title>" --body-file <file>` with a `--label` flag for each label from the Labels section below. If the repo's AGENTS.md or CLAUDE.md sets more PR rules, such as draft status, assignee or labels, add those flags.
 7. Reply with the PR URL.
 
 ## Title
@@ -25,6 +25,19 @@ Start with a conventional commit type: `feat`, `fix`, `chore`, `refactor`, `perf
 - `feat: allow profile image upload on web view`
 - `fix/eng-5716: square split by category not creating streams`
 - `spike: stream pos sales over websockets`
+
+## Labels
+
+Add every label that fits the PR:
+
+- `feature` for new behaviour (usually a `feat` title)
+- `bug` for a fix to broken behaviour (usually a `fix` title)
+- `refactor` for a change to code structure that keeps behaviour the same
+- `api-only` when the change only affects the API and nothing in the web or mobile UI
+- `not-user-facing` when no user can see the change, such as tooling, CI, tests or internal cleanup
+- `security` when the PR fixes or hardens a security issue, such as an IDOR, a permission check or data exposure
+
+Most PRs get one of `feature`, `bug` or `refactor`, plus any of the other three that apply. If none fit, add no label. If you can't tell whether one applies, ask the user before you create the PR.
 
 ## Body
 
