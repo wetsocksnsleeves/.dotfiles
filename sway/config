@@ -14,7 +14,7 @@ set $term ghostty
 set $menu rofi -show drun
 set $start-menu $HOME/.local/bin/rofi-categories
 set $power-menu $HOME/.local/bin/rofi-power-menu
-set $browser helium
+set $browser librewolf
 set $wallpaper $HOME/.dotfiles/wallpapers/chrome_gothic_cross.jpg
 set $cliphist-rofi-img $HOME/.local/bin/cliphist-rofi-img
 
@@ -37,6 +37,9 @@ for_window [title="^pulsemixer$"] resize set 800px 600px
 
 # Execute
 exec_always pgrep -x wl-paste || wl-paste --watch cliphist store
+
+# Polkit agent: shows password prompts for pkexec (e.g. input-remapper)
+exec_always pgrep -x lxpolkit || lxpolkit
 
 exec_always pgrep -x swayidle || swayidle -w \
     timeout 600 'swaymsg "output * dpms off"' \
@@ -63,7 +66,8 @@ exec_always pgrep -x swayidle || swayidle -w \
     bindsym $mod+escape exec $power-menu
 
     # Screenshot tools
-    bindsym alt+shift+4 exec grim -g "$(slurp)" - | wl-copy
+    # Freezes the screen first so hover states can be captured
+    bindsym alt+shift+4 exec ~/.local/bin/capture-screenshot
 
     # Regional screen recording with desktop + mic audio
     bindsym alt+shift+5 exec $HOME/.local/bin/capture-screenrecording --with-desktop-audio --with-microphone-audio

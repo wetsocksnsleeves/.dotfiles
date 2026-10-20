@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Freeze the screen, select a region, and copy the screenshot to the clipboard.
+# Freezing first keeps hover states, tooltips, and open menus in the shot.
+#
+# Needs wayfreeze: cargo install --locked --git https://github.com/Jappie3/wayfreeze
+
+WAYFREEZE="$(command -v wayfreeze || echo "$HOME/.cargo/bin/wayfreeze")"
+
+# Runs while the frozen frame is on screen; grim then captures the frozen frame.
+if [[ $1 == --select ]]; then
+  region="$(slurp)"
+  [[ -n $region ]] && grim -g "$region" - | wl-copy --type image/png
+  pkill -x wayfreeze
+  exit 0
+fi
+
+if [[ ! -x $WAYFREEZE ]]; then
+  notify-send "capture-screenshot: wayfreeze not found, capturing without freeze" -u normal -t 3000
+  exec "$0" --select
+fi
+
+exec "$WAYFREEZE" --hide-cursor --after-freeze-cmd "$0 --select"

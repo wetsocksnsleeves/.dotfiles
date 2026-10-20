@@ -1,0 +1,5 @@
+dest: $HOME/.config/librewolf/librewolf
+exclude:
+  - "**/.DS_Store"
+# strict: dest also holds the profiles; never adopt them into the set
+strict: true
