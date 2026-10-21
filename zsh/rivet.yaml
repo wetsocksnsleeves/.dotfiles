@@ -1,4 +1,5 @@
 dest: $HOME
 exclude:
   - "**/.DS_Store"
+  - .zshrc.local
 strict: true

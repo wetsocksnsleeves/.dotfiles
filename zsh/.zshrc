@@ -1,6 +1,3 @@
-# NOTE: Add this line in .zshrc to source this file
-# [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
 # Initialize mise FIRST before other tools modify PATH
 eval "$(/opt/homebrew/bin/mise activate zsh)"
 
@@ -75,5 +72,5 @@ alias sz="source ~/.zshrc"
 alias aenv="source .venv/bin/activate"
 alias mknextpj="npx create-next-app@latest"
 
-export TUNNEL_EXPERIMENTAL_SYNCER=1
-export DISABLE_DEV_NOTIFICATIONS=true
+# Machine-specific config, not tracked
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
