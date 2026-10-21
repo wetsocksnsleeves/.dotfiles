@@ -18,6 +18,3 @@ claude/skills/synced/
 # credentials, anywhere
 .credentials.json
 **/remote-settings.json
-
-# machine-local shell config
-zsh*/.zshrc.local

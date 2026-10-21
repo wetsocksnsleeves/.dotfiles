@@ -1,16 +1,17 @@
+# NOTE: Add this line to ~/.zshrc to source this file
+# [[ -f ~/.zshrc.mac ]] && source ~/.zshrc.mac
+
+# Initialize mise FIRST before other tools modify PATH
+eval "$(/opt/homebrew/bin/mise activate zsh)"
+
 # Zsh Setup
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="minimal"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
-# Editor
-export EDITOR=nvim
-export VISUAL=nvim
-
 # Vim keymaps
 bindkey -v
-bindkey -v 'fd' vi-cmd-mode
 
 # Visual cursor indicator
 function zle-keymap-select() {
@@ -26,17 +27,15 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
-# -------------------------
-
-# zoxide
-eval "$(zoxide init zsh)"
-
 # pnpm
 export PNPM_HOME="/home/ecto/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# opencode
+export PATH=/home/ecto/.opencode/bin:$PATH
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
@@ -58,22 +57,20 @@ bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
 
-# mise
-eval "$(~/.local/bin/mise activate zsh)"
+# Initialisations
+eval "$(zoxide init zsh)"
+
+# Modern Tools
+alias cd="z"
 
 # Git
 alias glg="lazygit"
-alias glgc="lazygit -p $HOME/.dotfiles"
+alias gpr="gh dash"
+alias glgc="lazygit -p ~/.dotfiles"
+alias gd="git diff @{u} | diffnav"
+alias gdp="git diff master...HEAD | diffnav"
 
 # Aliases
 alias sz="source ~/.zshrc"
-alias mknextpj="npx create-next-app@latest"
 alias aenv="source .venv/bin/activate"
-alias dex="find /usr/share/applications ~/.local/share/applications -name '*.desktop' | fzf | xargs sudo nvim"
-alias lgit="lazygit"
-
-# Tool replacements
-alias cd="z"
-
-# Machine-specific config, not tracked
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+alias mknextpj="npx create-next-app@latest"
