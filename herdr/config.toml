@@ -23,4 +23,4 @@ delivery = "system"
 
 [ui]
 pane_gaps = false
-agent_panel_sort = "spaces"
+agent_panel_sort = "priority"

@@ -6,4 +6,6 @@ exclude:
   - "*.sock"
   - ".plugins.lock"
   - "release-notes.json"
+  - session-snapshots
+  - sessions
 strict: false
