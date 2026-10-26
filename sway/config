@@ -11,12 +11,9 @@ set $right l
 
 # Apps
 set $term ghostty
-set $menu rofi -show drun
-set $start-menu $HOME/.local/bin/rofi-categories
 set $power-menu $HOME/.local/bin/rofi-power-menu
 set $browser librewolf
 set $wallpaper $HOME/.dotfiles/wallpapers/chrome_gothic_cross.jpg
-set $cliphist-rofi-img $HOME/.local/bin/cliphist-rofi-img
 
 include /etc/sway/config-vars.d/*
 
@@ -36,7 +33,8 @@ for_window [title="^pulsemixer$"] floating enable
 for_window [title="^pulsemixer$"] resize set 800px 600px
 
 # Execute
-exec_always pgrep -x wl-paste || wl-paste --watch cliphist store
+
+for_window [app_id="nanotes"] floating enable, resize set 560 760, move position center
 
 # Polkit agent: shows password prompts for pkexec (e.g. input-remapper)
 exec_always pgrep -x lxpolkit || lxpolkit
@@ -48,6 +46,7 @@ exec_always pgrep -x swayidle || swayidle -w \
     timeout 30 'if pgrep swaylock; then swaymsg "output * dpms off"; fi' \
     resume 'if pgrep swaylock; then swaymsg "output * dpms on"; fi' \
     before-sleep 'swaylock -i $wallpaper' \
+    lock 'swaylock -f -i $wallpaper' \
     after-resume 'swaymsg "output * dpms on"'
 
 ### Key bindings
@@ -61,8 +60,6 @@ exec_always pgrep -x swayidle || swayidle -w \
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym $mod+space exec $menu
-    bindsym $mod+ctrl+space exec $start-menu
     bindsym $mod+escape exec $power-menu
 
     # Screenshot tools
@@ -71,9 +68,6 @@ exec_always pgrep -x swayidle || swayidle -w \
 
     # Regional screen recording with desktop + mic audio
     bindsym alt+shift+5 exec $HOME/.local/bin/capture-screenrecording --with-desktop-audio --with-microphone-audio
-
-    # Clipboard
-    bindsym $mod+shift+v exec rofi -modi clipboard:$cliphist-rofi-img -show clipboard -show-icons
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -212,4 +206,5 @@ bindsym $mod+r mode "resize"
 exec_always pgrep -f "[w]aybar -c /home/ecto/.config/waybar/config -s" || waybar -c ~/.config/waybar/config -s ~/.config/waybar/style.css
 exec_always pgrep -f "[w]aybar -c /home/ecto/.config/waybar/config-dp2 -s" || waybar -c ~/.config/waybar/config-dp2 -s ~/.config/waybar/style-dp2.css
 
+include ~/.config/sway/vicinae.conf
 include /etc/sway/config.d/*

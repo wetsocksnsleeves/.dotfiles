@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# @raycast.schemaVersion 1
-# @raycast.title Toggle Lid Sleep
-# @raycast.mode compact
-# @raycast.packageName Power
-# @raycast.icon 💻
-# @raycast.description Keep the Mac awake with the lid closed, or restore normal sleep
+# @vicinae.schemaVersion 1
+# @vicinae.title Toggle Lid Sleep
+# @vicinae.mode compact
+# @vicinae.packageName Power
+# @vicinae.icon 💻
+# @vicinae.description Keep the Mac awake with the lid closed, or restore normal sleep
 
 current=$(pmset -g | awk '/SleepDisabled/ {print $2}')
 if [ "$current" = "1" ]; then new=0; else new=1; fi

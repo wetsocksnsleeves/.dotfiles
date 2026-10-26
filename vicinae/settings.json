@@ -10,19 +10,30 @@
 
 {
    "$schema": "https://vicinae.com/schemas/config.json",
+   "close_on_focus_loss": false,
    "wrap_navigation": true,
+   "escape_key_behavior": "close_window",
    "keybinding": "default",
    "global_shortcuts": {
       "toggle": "control+SPACE"
+   },
+   "font": {
+      "normal": {
+         "family": "JetBrainsMono Nerd Font Mono",
+         "size": 11
+      }
    },
    "theme": {
       "dark": {
          "name": "vicinae-dark"
       }
    },
+   "telemetry": {
+      "system_info": false
+   },
    "launcher_window": {
       "rounding": 20,
-      "opacity": 0,
+      "opacity": 0.95,
       "compact_mode": {
          "enabled": true
       }
@@ -32,6 +43,9 @@
          "entrypoints": {
             "app.markraft.mac": {
                "alias": "note, notes"
+            },
+            "librewolf": {
+               "alias": "browser,internet,chrome,firefox"
             }
          }
       },
@@ -66,18 +80,43 @@
       },
       "power": {
          "entrypoints": {
+            "hibernate": {
+               "enabled": true
+            },
             "lock": {
                "alias": "lock, lock screen, loc"
+            },
+            "logout": {
+               "enabled": true
+            },
+            "power-off": {
+               "enabled": true
+            },
+            "reboot": {
+               "enabled": true
+            },
+            "sleep": {
+               "enabled": true
+            },
+            "soft-reboot": {
+               "enabled": true
+            },
+            "suspend": {
+               "enabled": true
             }
          }
       },
       "scripts": {
          "preferences": {
             "customDirs": [
-               "/Users/etao/.dotfiles/vicinae"
+               "/Users/etao/.dotfiles/vicinae",
+               "/home/ecto/.dotfiles/vicinae"
             ]
          },
          "entrypoints": {
+            "scripts.screen-record.sh": {
+               "alias": "record,capture"
+            },
             "toggle-lid-sleep.sh": {
                "enabled": true
             }

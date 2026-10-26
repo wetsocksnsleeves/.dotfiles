@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# @raycast.schemaVersion 1
-# @raycast.title Lock Keyboard
-# @raycast.mode compact
-# @raycast.packageName Utilities
-# @raycast.icon 🧽
-# @raycast.argument1 { "type": "text", "placeholder": "Seconds (60)", "optional": true }
-# @raycast.description Ignore all keyboard input so the keyboard can be cleaned. ⌃⌥⌘L unlocks early
+# @vicinae.schemaVersion 1
+# @vicinae.title Lock Keyboard
+# @vicinae.mode compact
+# @vicinae.packageName Utilities
+# @vicinae.icon 🧽
+# @vicinae.argument1 { "type": "text", "placeholder": "Seconds (60)", "optional": true }
+# @vicinae.description Ignore all keyboard input so the keyboard can be cleaned. ⌃⌥⌘L unlocks early
 
 max_duration=600
 duration=${1:-60}
