@@ -1,6 +1,6 @@
 ---
 name: herdr-management
-description: Launch and drive Claude sessions ("threads") inside herdr, the terminal workspace manager. Use whenever the user talks about launching, starting, spinning up or opening a new thread, session, agent, Claude, tab or workspace; sending a prompt to another thread; or opening a PR or branch in a thread ("open #63845 in slot-2", "check this PR out here"). Does not create or remove git worktrees.
+description: Launch and drive Claude sessions ("threads") inside herdr, the terminal workspace manager. Use whenever the user talks about launching, starting, spinning up or opening a new thread, session, agent, Claude, tab or workspace; sending a prompt to another thread; or opening a PR or branch in a thread ("open #63845 in slot-2", "check this PR out here"); or spinning up a new PR in another thread, which creates a new slot-N worktree and workspace for it.
 ---
 
 # Herdr session management
@@ -16,8 +16,9 @@ A "thread" is a Claude session in a herdr pane. The user names threads by the wo
 
 ## Scope
 
-- **In scope.** Launching new threads, sending prompts to threads, focusing threads, and checking a PR branch out in a thread's directory.
-- **Out of scope.** Creating, removing or repairing git worktrees, and freeing a branch that another worktree holds. Those belong to worktree management. Use the repo's worktree skill if there is one, or ask the user.
+- **In scope.** Launching new threads, sending prompts to threads, focusing threads, checking a PR branch out in a thread's directory, and creating a slot-N worktree for a new PR thread (see "Spinning up a PR in a new thread").
+- **Out of scope.** Removing or repairing git worktrees, creating any worktree other than a new slot-N, and freeing a branch that another worktree holds. Those belong to worktree management. Use the repo's worktree skill if there is one, or ask the user.
+- **Only work where the user can follow.** Every worktree Claude works in must be open in a herdr workspace. Never `cd` into another worktree from this session, use `EnterWorktree`, or start a subagent with `isolation: "worktree"`. Work in another checkout happens in that checkout's own thread.
 - **A new thread always runs Claude.** Start it in the new pane right after creating it. See "Launching a new thread".
 - **No other defaults beyond the ones below.** Layout, labels, opening prompts, dependency installs and whether to wait on an agent all depend on what the user asks for. If the request doesn't say, do the minimum and don't invent a convention.
 
@@ -71,7 +72,44 @@ Then run these steps in order:
 
 Example: "open #63845 in a new thread in slot-3 and run the understand skill" means create the workspace, check out the PR branch in slot-3's directory, start Claude, then prompt it with `/understand`.
 
-If the user didn't say which directory the new thread uses, ask. Creating a worktree for it is out of scope.
+If the user didn't say which directory the new thread uses, ask. The one exception is a new PR thread, which gets a new slot-N worktree (next section).
+
+## Spinning up a PR in another thread
+
+"Spin up a PR" with no thread named happens in the current thread. Use the create-pr skill and don't create anything here.
+
+When the user names a thread ("spin up a PR in slot-3"), do it in that thread and create nothing new:
+
+1. Resolve the thread to its agent and `cwd` (see "Reading state").
+2. Run `git -C <dir> status --porcelain`. If there are uncommitted changes, stop and ask.
+3. If the agent is `working`, tell the user and stop. Don't switch a branch under it.
+4. Name the branch with the branch rules in the user's CLAUDE.md. If you can't tell the type or the ticket from the request, ask.
+5. Run `git -C <dir> fetch origin master`, then `git -C <dir> switch --no-track -c <branch> origin/master`.
+6. Settle the thread's old conversation as "Setting up an existing thread for a new task" describes, then send the task with `herdr agent prompt`: the user's description of the work, and that it ends with a PR. Don't do any of the work in this session.
+
+When the user says "another thread" without naming one, look for a free slot thread first. A slot thread is free when all of these hold:
+
+- Its workspace label is `slot-N` and it isn't this session's workspace (`HERDR_WORKSPACE_ID`).
+- It has exactly one Claude agent in `agent list`, and that agent is `idle`.
+- `git -C <dir> status --porcelain` prints nothing.
+- Its branch has no work left to do. Either `gh pr list --head <branch> --state all --json state` shows the PR as `MERGED` or `CLOSED` and `git -C <dir> rev-list --count @{u}..HEAD` is 0, or the branch has no PR and `git -C <dir> rev-list --count origin/master..HEAD` is 0. Don't use the ahead-of-master count for a merged PR. A squash merge leaves the branch's commits ahead of master.
+
+If any slot is free, use the lowest-numbered one and follow the named-thread steps above. The only difference is in step 6: clear the session without asking, because its work is already finished. Tell the user which slot you used and why it counted as free, for example "slot-3, #63823 merged". If no slot is free, create one as described below.
+
+When the user asks for a new thread, or no slot is free, give the work its own slot worktree and workspace:
+
+1. Pick the slot number. Take the highest N among `slot-N` directories in the worktrees folder (`../worktrees` from the main repo) and `slot-N` workspace labels in `herdr workspace list`, and add 1.
+2. Name the branch with the branch rules in the user's CLAUDE.md. If you can't tell the type or the ticket from the request, ask.
+3. Create the worktree from the main repo with the repo's worktree script. In payaus that is:
+
+   ```bash
+   bin/manage-worktrees --non-interactive <branch> slot-<N>
+   ```
+
+   It branches from master, keeps the branch name as given, and names the directory `slot-<N>`. If it fails because the branch already exists, report it and ask. Don't `cd` into the new worktree.
+4. Create the workspace with `herdr workspace create --cwd <worktree path> --label slot-<N>`, then start Claude in its root pane (see "Launching a new thread").
+5. Send the task as the new thread's first prompt: the user's description of the work, and that it ends with a PR. Don't do any of the work in this session.
+6. Tell the user the slot number. If this thread has uncommitted changes that belong to the task, say that they did not carry over, because the new worktree starts from master.
 
 Every create command runs as soon as it is called, even with no arguments. A bare `herdr workspace create` makes a real workspace in the current directory. Don't run create commands to read their usage. Read the schema instead (below).
 

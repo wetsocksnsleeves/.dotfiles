@@ -64,6 +64,13 @@
             }
          }
       },
+      "power": {
+         "entrypoints": {
+            "lock": {
+               "alias": "lock, lock screen, loc"
+            }
+         }
+      },
       "scripts": {
          "preferences": {
             "customDirs": [

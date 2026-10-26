@@ -1,16 +1,22 @@
 ---
 name: create-pr
-description: Create a GitHub pull request for the current branch with gh, with a conventional-commit title and a short PROBLEM / CAUSE / SOLUTION / QA body. Use when the user asks to create, open, raise or make a PR or pull request, push the branch up as a PR, or write the body for a new PR.
+description: Create a GitHub pull request for the current branch with gh, with a conventional-commit title and a short PROBLEM / CAUSE / SOLUTION / QA body. Use when the user asks to create, open, raise, make or spin up a PR or pull request, push the branch up as a PR, or write the body for a new PR.
 user-invocable: false
 ---
 
 # Create PR
 
-Open a pull request for the current branch with `gh pr create`, using the title format and body template below.
+Open a pull request with `gh pr create`, using the title format and body template below.
+
+## Which thread
+
+"Spin up a PR" with no thread named means the current thread. Do the work in this checkout (`git rev-parse --show-toplevel`) and follow the steps below.
+
+If the user names a thread, or asks for another or a new thread, use the herdr-management skill ("Spinning up a PR in another thread") instead. A named thread does the work in its own checkout. An unnamed "another thread" reuses a free slot thread if there is one. Only a new thread, or an unnamed one with no free slot, gets a new slot-N worktree. Don't create a worktree from this session, and don't `cd` into one, use `EnterWorktree`, or start a subagent with `isolation: "worktree"`. The user only works in checkouts they can reach by navigating herdr.
 
 ## Steps
 
-1. Check the branch. If it is `master` or `main`, stop and ask which branch the PR is for.
+1. Check the branch. If it is `master` or `main`, create a new branch in this checkout with `git switch -c <branch>`, which carries uncommitted changes over. Name it with the branch rules in the user's CLAUDE.md: a type, a slash, the Linear ticket id in lowercase if there is one, then lowercase words joined by hyphens. If the branch is already a feature branch for this work, use it.
 2. Run `git status`. If there are uncommitted changes, ask whether to commit them before you continue. Never commit without asking.
 3. Work out what the branch does from `git log master..HEAD` and `git diff master...HEAD`. If the branch name or a commit names a Linear ticket (for example `ENG-1234`), read the ticket for the problem it describes.
 4. Push the branch with `git push -u origin HEAD`.
